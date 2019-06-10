@@ -1,0 +1,45 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/register.jpg');">
+        <div class="filter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 mr-auto ml-auto">
+                      <div class="card card-register">
+                         
+                          <div class="social-line text-center">
+                             <img src="../../assets/img/endgame.png" style="width:350px;">
+                          </div>
+                          <form class="register-form">
+                              <label>TEAM NAME</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                  <input type="text" required class="form-control" placeholder="Team Name" (focus)="focus=true" (blur)="focus=false" >
+                              </div>
+
+                              <label>TEAM MEMBERS</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                  <input type="text" class="form-control" required placeholder="Team Member 1" (focus)="focus1=true" (blur)="focus1=false" >
+                              </div>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <input type="text" class="form-control" placeholder="Team Member 2" (focus)="focus1=true" (blur)="focus1=false" >
+                            </div>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <input type="text" class="form-control" placeholder="Team Member 3" (focus)="focus1=true" (blur)="focus1=false" >
+                            </div>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <input type="text" class="form-control" placeholder="Team Member 4" (focus)="focus1=true" (blur)="focus1=false" >
+                            </div>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <input type="text" class="form-control" placeholder="Team Member 5" (focus)="focus1=true" (blur)="focus1=false" >
+                            </div>
+                            <div class="rebutton">
+                                <button class="btn btn-danger btn-block btn-round">Register</button>
+
+                            </div>
+                          </form>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</div>
