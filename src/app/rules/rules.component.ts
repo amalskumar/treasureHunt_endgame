@@ -11,5 +11,5 @@ export class RulesComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {}
-
+//test
 }
