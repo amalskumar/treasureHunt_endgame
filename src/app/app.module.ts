@@ -15,10 +15,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material';
-
+import { CountdownModule } from 'ngx-countdown';
 import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamepanelComponent } from './gamepanel/gamepanel.component';
+import { TriviaComponent } from './trivia/trivia.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,14 @@ import { GamepanelComponent } from './gamepanel/gamepanel.component';
     RulesComponent,
     NavbarComponent,
     FooterComponent,
-    GamepanelComponent
+    GamepanelComponent,
+    TriviaComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
+    CountdownModule ,
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
@@ -43,6 +46,7 @@ import { GamepanelComponent } from './gamepanel/gamepanel.component';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    FormsModule
   ],
   exports: [
     MatButtonModule,
