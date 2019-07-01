@@ -1,0 +1,78 @@
+
+
+           <div class="wrapper">
+              <div class="page-header section-dark" style="background-image: url('./assets/img/federico-beccari.jpg')">
+                  <div class="filter"></div>
+                  <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
+                  <div class="content-center">
+                      <div class="container">
+                         <div class="row">
+                           <div clas="col-lg-9">
+                              <div class="card">
+
+<div *ngIf="!startTrivia && !QuesOver" class="card-body">
+  <div class="triviaIns">
+      <p>You have 40 questions o answer</p>
+      <p>You will get 30seconds to answer each</p>
+      <p>Question changes after timeout even if not submitted</p>
+      <p>TRIVIA ends in 5 minutes! HURRYUP</p>
+      <p>Click PLAY to start game!</p>
+  </div>
+<div class="triviaButton">
+    <a  class="btn btn-primary" (click)="playTrivia()">PLAY</a>
+
+</div>
+</div>
+
+
+
+
+<div *ngIf="QuesOver" class="card-body" style="padding: 85px">
+<h3>Game Over!!!</h3>
+
+  </div>
+
+
+
+
+
+                                  <div *ngIf="startTrivia && !QuesOver" class="card-body">
+                                    <div class="container">
+                                      <div class="row">
+
+                                     
+                                    <div class="col-lg-12 quesSection ">
+                                        <h3 class="card-title p-1 questitle float-left">Question {{activeQuestion.id}}/40</h3>
+                                        <div class="questimer float-right"><countdown  [config]="{leftTime: 5}" (finished)="onFinished()">$!m!:$!s!</countdown></div> 
+                                    </div>
+                                    <p class="card-text pt-4 pb-4 col-12  quesQues">{{activeQuestion.question}}</p>
+                                    <div class="col-lg-12">
+                                        <form>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio" >&nbsp;{{activeQuestion.a}}</label>
+                                            </div>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio">&nbsp;{{activeQuestion.b}}</label>
+                                            </div>
+                                            <div class="radio ">
+                                              <label><input type="radio" name="optradio">&nbsp;{{activeQuestion.c}}</label>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    <div class="col-lg-12 text-right">
+                                    <a  class="btn btn-primary mt-2 " (click)="showNextQuestion()">NEXT</a>
+                                  </div>
+                                </div>
+                                </div>
+                              </div>
+                                </div>
+                           </div>
+                         </div>
+                          
+
+                        
+                      </div>
+                  </div>
+              </div>
+              
+          
