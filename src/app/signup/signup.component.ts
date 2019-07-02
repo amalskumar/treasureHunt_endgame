@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ApiserviceService } from 'app/services/apiservice.service';
 export class Register {
     teamName: string;
     teamMember1email: string;
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
 
     registerData: Register;
     registerForm: FormGroup;
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private api: ApiserviceService) {
         this.registerData = new Register();
 
     }
@@ -26,11 +27,11 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             teamNameCtrl: ['', Validators.required],
-            teamMember1emailCtrl: ['', Validators.required],
-            teamMember2emailCtrl: ['', Validators.required],
-            teamMember3emailCtrl: ['', Validators.required],
-            teamMember4emailCtrl: ['', Validators.required],
-            teamMember5emailCtrl: ['', Validators.required],
+            teamMember1emailCtrl: ['', Validators.required, Validators.email],
+            teamMember2emailCtrl: ['', Validators.email],
+            teamMember3emailCtrl: ['', Validators.email],
+            teamMember4emailCtrl: ['', Validators.email],
+            teamMember5emailCtrl: ['', Validators.email],
           });
     }
 
@@ -43,6 +44,11 @@ export class SignupComponent implements OnInit {
             this.registerData.teamMember4email = this.registerForm.value.teamMember4emailCtrl;
             this.registerData.teamMember4email = this.registerForm.value.teamMember5emailCtrl;
             
+            this.api.registerUser(this.registerData).subscribe((data)=> {
+                //Show Success...
+                console.log(this.registerData);
+            }
+            );
         }
     }
 }

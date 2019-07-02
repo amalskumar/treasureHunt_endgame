@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamepanelComponent } from './gamepanel/gamepanel.component';
 import { TriviaComponent } from './trivia/trivia.component';
+import { ApiserviceService } from './services/apiservice.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { TriviaComponent } from './trivia/trivia.component';
   entryComponents: [
     GamepanelComponent,
 ],
-  providers: [],
+  providers: [ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
