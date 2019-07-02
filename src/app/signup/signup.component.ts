@@ -16,7 +16,9 @@ export class Register {
     styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+public registerSuccess:boolean=false;
+public success:boolean=false;
+public signupData;
     registerData: Register;
     registerForm: FormGroup;
     constructor(private formBuilder: FormBuilder, private api: ApiserviceService) {
@@ -25,13 +27,14 @@ export class SignupComponent implements OnInit {
     }
 
     ngOnInit() {
+   
         this.registerForm = this.formBuilder.group({
             teamNameCtrl: ['', Validators.required],
-            teamMember1emailCtrl: ['', Validators.required, Validators.email],
-            teamMember2emailCtrl: ['', Validators.email],
-            teamMember3emailCtrl: ['', Validators.email],
-            teamMember4emailCtrl: ['', Validators.email],
-            teamMember5emailCtrl: ['', Validators.email],
+            teamMember1emailCtrl: ['', [Validators.required, Validators.email]],
+            teamMember2emailCtrl: ['', [Validators.email]],
+            teamMember3emailCtrl: ['', [Validators.email]],
+            teamMember4emailCtrl: ['', [Validators.email]],
+            teamMember5emailCtrl: ['', [Validators.email]],
           });
     }
 
@@ -46,8 +49,18 @@ export class SignupComponent implements OnInit {
             
             this.api.registerUser(this.registerData).subscribe((data)=> {
                 //Show Success...
-                console.log(this.registerData);
-            }
+       
+                this.registerSuccess=true;
+                if(data){
+                    this.signupData=data;
+                    if(this.signupData[0].status=='Success'){
+                this.success=true;
+                    }else{
+                this.success=false;
+
+                    }
+                }this.success=false;
+            }          
             );
         }
     }

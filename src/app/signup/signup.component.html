@@ -8,9 +8,29 @@
                       <div class="card card-register">
                          
                           <div class="social-line text-center">
-                             <img src="../../assets/img/endgame.png" style="width:350px;">
+                             <img src="../../assets/img/endgame.png" style="width:50%;">
                           </div>
-                          <form class="register-form" [formGroup]="registerForm">
+
+
+
+<div *ngIf="registerSuccess && success" class="successSection text-center pt-5">
+    <img src="../../assets/img/congrats.png" width="50%">
+<p class="pt-2">{{signupData.message}}</p>
+</div>
+
+<div *ngIf="registerSuccess && !success" class="successSection text-center pt-5">
+    <h3 class="pt-2 pb-3">Sorry!</h3>
+    <p class="pt-2">{{signupData.message}}</p>
+    </div>
+
+
+
+
+
+
+
+
+                          <form *ngIf="!registerSuccess" class="register-form" [formGroup]="registerForm">
                               <div class="row">
                               <div class="col-lg-6">
                                     <label>TEAM NAME</label>
@@ -37,7 +57,7 @@
                                 <input type="text" class="form-control" placeholder="member5@hrblock.com" (focus)="focus1=true" formControlName="teamMember5emailCtrl" (blur)="focus1=false" >
                             </div>
                             <div class="rebutton">
-                                <button class="btn btn-danger btn-block btn-round" (click)="signUp();">Register</button>
+                                <button class="btn btn-danger btn-block btn-round" (click)="signUp()">Register</button>
                             </div>
                               </div>
                             </div>

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamepanelComponent } from './gamepanel/gamepanel.component';
 import { TriviaComponent } from './trivia/trivia.component';
 import { ApiserviceService } from './services/apiservice.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { ApiserviceService } from './services/apiservice.service';
     MatInputModule,
     MatRippleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+
   ],
   exports: [
     MatButtonModule,
