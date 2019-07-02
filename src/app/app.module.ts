@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamepanelComponent } from './gamepanel/gamepanel.component';
 import { TriviaComponent } from './trivia/trivia.component';
+import { ApiserviceService } from './services/apiservice.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TriviaComponent } from './trivia/trivia.component';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatButtonModule,
@@ -57,7 +59,7 @@ import { TriviaComponent } from './trivia/trivia.component';
   entryComponents: [
     GamepanelComponent,
 ],
-  providers: [],
+  providers: [ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
