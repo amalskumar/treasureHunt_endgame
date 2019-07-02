@@ -6,3 +6,13 @@
     font-weight: 400;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .content-center{
+      margin-top: 100px;
+  }
+  .card p {
+    font-size: 15px;
+    font-weight: 400;
+}
+    }
