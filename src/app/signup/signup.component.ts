@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ApiserviceService } from 'app/services/apiservice.service';
+import {Router} from "@angular/router"
 export class Register {
     teamName: string;
     teamMember1email: string;
@@ -26,7 +27,7 @@ export class SignupComponent implements OnInit {
     public signupData;
     registerData: Register;
     registerForm: FormGroup;
-    constructor(private formBuilder: FormBuilder, private api: ApiserviceService) {
+    constructor(private formBuilder: FormBuilder,private router: Router, private api: ApiserviceService) {
         this.registerData = new Register();
 
     }
@@ -67,5 +68,12 @@ export class SignupComponent implements OnInit {
             }
             );
         }
+    }
+
+
+
+
+    redirectRules(){
+        this.router.navigate(['/rules'])
     }
 }
