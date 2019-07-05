@@ -70,13 +70,18 @@
 /*     position: relative; */
 
 }
+<<<<<<< HEAD
 .navigation-example{
     /* background-image: url('../img/ilya-yakover.jpg'); */
+=======
+/* .navigation-example{
+    background-image: url('../img/ilya-yakover.jpg');
+>>>>>>> 8b1fbfaa5266ea257c354cb2a722bae31c8d06de
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
     margin-top:0;
-}
+} */
 #notifications{
     background-color: #FFFFFF;
     display: block;

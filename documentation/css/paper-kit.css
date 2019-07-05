@@ -2034,7 +2034,7 @@ textarea.form-control {
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   padding: 0;
-  background: #FFFFFF;
+  background: #262626;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
 }
 .navbar .navbar-brand {
@@ -4871,11 +4871,11 @@ textarea.form-control {
     right: 0;
     z-index: 1032;
     visibility: visible;
-    background-color: #999;
+    background-color: #262626;
     overflow-y: visible;
     border-top: none;
     text-align: left;
-    border-left: 1px solid #CCC5B9;
+    border-left: none;
     padding-right: 0px;
     padding-left: 40px;
     padding-top: 15px;
@@ -4916,8 +4916,7 @@ textarea.form-control {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #FFFCF5;
-    background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
+    background-color: #000 !important;
     display: block;
     content: "";
     z-index: 1;
@@ -4962,7 +4961,7 @@ textarea.form-control {
   }
 
   .fixed-top .navbar-collapse {
-    background-color: #FF8F5E;
+    background-color: #262626;
     float: left;
   }
 
@@ -5109,7 +5108,7 @@ textarea.form-control {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #FFFCF5;
+    background-color:  rgb(49, 49, 49);
     background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
     display: block;
     content: "";

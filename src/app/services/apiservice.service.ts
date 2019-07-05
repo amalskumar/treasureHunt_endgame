@@ -5,7 +5,6 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +14,6 @@ export class ApiserviceService {
 
   registerUser(user) {
     const body = JSON.stringify(user);
-    return this.http.post(`https://www.endgame.world/endgameapi/api/v1/register`, body, httpOptions);
+    return this.http.post(`https://endgame.world/endgameapi/api/v1/register`, body, httpOptions);
   }
 }
