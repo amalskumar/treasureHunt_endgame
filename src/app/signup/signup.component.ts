@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
     public signupData;
     registerData: Register;
     registerForm: FormGroup;
+    isFormValid = true;
     constructor(private formBuilder: FormBuilder, private api: ApiserviceService) {
         this.registerData = new Register();
 
@@ -35,23 +36,25 @@ export class SignupComponent implements OnInit {
 
         this.registerForm = this.formBuilder.group({
             teamNameCtrl: ['', Validators.required],
-            teamMember1emailCtrl: ['', [Validators.required, Validators.email]],
-            teamMember2emailCtrl: ['', [Validators.email]],
-            teamMember3emailCtrl: ['', [Validators.email]],
-            teamMember4emailCtrl: ['', [Validators.email]],
-            teamMember5emailCtrl: ['', [Validators.email]],
+            teamMember1emailCtrl: ['', [Validators.required,
+            Validators.email,
+            Validators.pattern('^[A-Za-z0-9]+(.|_)+[A-Za-z0-9]+@+hrblock.com$')]],
+            teamMember2emailCtrl: ['', [Validators.email, Validators.pattern('^[A-Za-z0-9]+(.|_)+[A-Za-z0-9]+@+hrblock.com$')]],
+            teamMember3emailCtrl: ['', [Validators.email, Validators.pattern('^[A-Za-z0-9]+(.|_)+[A-Za-z0-9]+@+hrblock.com$')]],
+            teamMember4emailCtrl: ['', [Validators.email, Validators.pattern('^[A-Za-z0-9]+(.|_)+[A-Za-z0-9]+@+hrblock.com$')]],
+            teamMember5emailCtrl: ['', [Validators.email, Validators.pattern('^[A-Za-z0-9]+(.|_)+[A-Za-z0-9]+@+hrblock.com$')]],
         });
     }
 
     signUp() {
         if (this.registerForm.valid) {
+            this.isFormValid = true;
             this.registerData.teamName = this.registerForm.value.teamNameCtrl;
             this.registerData.teamMember1email = this.registerForm.value.teamMember1emailCtrl;
             this.registerData.teamMember2email = this.registerForm.value.teamMember2emailCtrl;
             this.registerData.teamMember3email = this.registerForm.value.teamMember3emailCtrl;
             this.registerData.teamMember4email = this.registerForm.value.teamMember4emailCtrl;
             this.registerData.teamMember5email = this.registerForm.value.teamMember5emailCtrl;
-
             this.api.registerUser(this.registerData).subscribe((data: Response) => {
                 this.registerSuccess = true;
                 if (data) {
@@ -66,6 +69,8 @@ export class SignupComponent implements OnInit {
                 }
             }
             );
+        }else {
+            this.isFormValid = false;
         }
     }
 }

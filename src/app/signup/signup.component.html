@@ -35,6 +35,7 @@
                                     <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                         <input type="text" required class="form-control" placeholder="Team Name" formControlName="teamNameCtrl" (focus)="focus=true" (blur)="focus=false" >
                                     </div>
+                                    <p *ngIf="!isFormValid && registerForm.get('teamNameCtrl').invalid">Please enter a Team Name</p>
                               </div>
                               
                               <div class="col-lg-6">
@@ -42,18 +43,23 @@
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                   <input type="text" class="form-control" required placeholder="member1@hrblock.com" formControlName="teamMember1emailCtrl" (focus)="focus1=true" (blur)="focus1=false" >
                               </div>
+                              <p *ngIf="!isFormValid && registerForm.get('teamMember1emailCtrl').invalid">Please enter a valid H&R Block email</p>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <input type="text" class="form-control" placeholder="member2@hrblock.com" (focus)="focus1=true" formControlName="teamMember2emailCtrl" (blur)="focus1=false" >
                             </div>
+                            <p *ngIf="!isFormValid && registerForm.get('teamMember2emailCtrl').invalid">Please enter a valid H&R Block email</p>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <input type="text" class="form-control" placeholder="member3@hrblock.com" (focus)="focus1=true" formControlName="teamMember3emailCtrl" (blur)="focus1=false" >
                             </div>
+                            <p *ngIf="!isFormValid && registerForm.get('teamMember3emailCtrl').invalid">Please enter a valid H&R Block email</p>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <input type="text" class="form-control" placeholder="member4@hrblock.com" (focus)="focus1=true" formControlName="teamMember4emailCtrl" (blur)="focus1=false" >
                             </div>
+                            <p *ngIf="!isFormValid && registerForm.get('teamMember4emailCtrl').invalid">Please enter a valid H&R Block email</p>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <input type="text" class="form-control" placeholder="member5@hrblock.com" (focus)="focus1=true" formControlName="teamMember5emailCtrl" (blur)="focus1=false" >
                             </div>
+                            <p *ngIf="!isFormValid && registerForm.get('teamMember5emailCtrl').invalid">Please enter a valid H&R Block email</p>
                             
                               </div>
                               <div class="col-lg-12">
