@@ -5,11 +5,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { SignupComponent } from './signup/signup.component';
+import { ClaimpointComponent } from './claimpoint/claimpoint.component';
+import { AuthenticationGuard } from 'microsoft-adal-angular6';
+import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'rules', component: RulesComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'claim-stone', component: FoundstoneComponent, canActivate: [AuthenticationGuard]  },
+  { path: 'signup', component: SignupComponent},
+  { path: 'claimpoint/:id', component: ClaimpointComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

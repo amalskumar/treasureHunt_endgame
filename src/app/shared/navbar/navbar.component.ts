@@ -57,9 +57,19 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
-    isSignup() {
+    isClaimGift() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '/signup' ) {
+
+        if( titlee === '/claim-stone' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    isClaimpoint() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        if( titlee === '/claimpoint/:id' ) {
             return true;
         }
         else {

@@ -8,16 +8,18 @@ import {Router} from "@angular/router";
 })
 
 export class HomeComponent implements OnInit {
-    model = {
-        left: true,
-        middle: false,
-        right: false
-    };
 
+public snap=false;
 
     constructor(private router: Router) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+       
+    }
+    ended() {
+        this.register();
+        }
+        
     register(){
         this.router.navigate(['/signup'])
     }

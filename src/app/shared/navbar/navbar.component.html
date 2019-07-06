@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg navbg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
             <a [routerLink]="['/home']" ><img src="../../../assets/img/endgame.png" style="width:150px;"></a>
@@ -8,14 +8,34 @@
                 <span class="navbar-toggler-bar"></span>
             </button>
         </div>
-        <div class="navbar-collapse navbar-transparent" id="navbarToggler">
+        <div class="navbar-collapse navbar-transparent " id="navbarToggler">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a [routerLink]="['/signup']" class="nav-link" (click)="sidebarToggle()"><i class="nc-icon nc-book-bookmark"></i>SIGNUP</a>
+                    <a [routerLink]="['/signup']" class="nav-link" (click)="sidebarToggle()"><i class="nc-icon nc-tap-01"></i>SIGNUP</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/rules']" class="nav-link" (click)="sidebarToggle()"><i class="nc-icon nc-book-bookmark"></i>RULES</a>
+                    <a [routerLink]="['/rules']" class="nav-link" (click)="sidebarToggle()"><i class="nc-icon nc-bullet-list-67"></i>INSTRUCTIONS</a>
                 </li>
+                <div *ngIf='isClaimGift()' class="nav-item dropdown">
+             <a
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"><i
+                class="nc-icon nc-book-bookmark"></i>Block Hawks</a>
+             <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
+             <li class="dropdown-header">akhil.padm...@hrblock.com</li>
+             <a class="dropdown-item">Points : 100</a>
+             <div class="dropdown-divider"></div>
+             <!-- <a class="dropdown-item">Squad List & Leader Board</a> -->
+             <div class="dropdown-divider"></div>
+             <a class="dropdown-item">Logout</a>
+
+</ul>
+
+</div>
+
 
             </ul>
         </div>

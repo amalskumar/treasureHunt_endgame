@@ -18,15 +18,23 @@ import { CountdownModule } from 'ngx-countdown';
 import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiserviceService } from './services/apiservice.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ClaimpointComponent } from './claimpoint/claimpoint.component';
+import { NgxThanosModule } from '@wellwind/ngx-thanos';
+import { MsAdalAngular6Service, MsAdalAngular6Module } from "microsoft-adal-angular6";
+import { InsertAuthTokenInterceptor } from './services/insert-auth-token-interceptor';
+import { AuthenticationGuard } from 'microsoft-adal-angular6';
+import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
 
-@NgModule({
+@NgModule({   
   declarations: [
     AppComponent,
     SignupComponent,
     RulesComponent,
     NavbarComponent,
     FooterComponent,
+    ClaimpointComponent,
+    FoundstoneComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,16 @@ import { HttpClientModule } from '@angular/common/http';
     MatRippleModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxThanosModule,
+    MsAdalAngular6Module.forRoot({
+      tenant: '3ec4eda1-a5d1-433d-90da-8dc791283d95',// HRB Tenant
+      clientId: '18d61313-a5d1-4db8-8761-c773b5e48d0d', // EmgGame ID
+      authority: "https://login.microsoftonline.com/3ec4eda1-a5d1-433d-90da-8dc791283d95",
+      cacheLocation: 'sessionStorage',
+      redirectUri: 'http://localhost:4200/rules',
+      navigateToLoginRequestUrl:false,
+      })
 
   ],
   exports: [
@@ -55,7 +72,12 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   entryComponents: [
 ],
-  providers: [ApiserviceService],
+  providers: [ApiserviceService,MsAdalAngular6Service,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InsertAuthTokenInterceptor,
+      multi: true
+    },AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

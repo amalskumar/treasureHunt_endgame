@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ApiserviceService } from 'app/services/apiservice.service';
-import {Router} from "@angular/router"
+import {Router} from "@angular/router";
+
+
 export class Register {
     teamName: string;
     teamMember1email: string;
@@ -27,17 +29,15 @@ export class SignupComponent implements OnInit {
     public signupData;
     registerData: Register;
     registerForm: FormGroup;
-<<<<<<< HEAD
-    constructor(private formBuilder: FormBuilder,private router: Router, private api: ApiserviceService) {
-=======
     isFormValid = true;
-    constructor(private formBuilder: FormBuilder, private api: ApiserviceService) {
->>>>>>> 8b1fbfaa5266ea257c354cb2a722bae31c8d06de
+    constructor(private formBuilder: FormBuilder, private api: ApiserviceService, private router:Router) {
         this.registerData = new Register();
 
     }
 
     ngOnInit() {
+       
+
 
         this.registerForm = this.formBuilder.group({
             teamNameCtrl: ['', Validators.required],

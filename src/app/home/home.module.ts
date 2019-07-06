@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-
+import { NgxThanosModule } from '@wellwind/ngx-thanos';
 import { HomeComponent } from './home.component';
 
 
@@ -13,7 +13,8 @@ import { HomeComponent } from './home.component';
         CommonModule,
         BrowserModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        NgxThanosModule
 
     ],
     declarations: [ HomeComponent ],

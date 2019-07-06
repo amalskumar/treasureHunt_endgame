@@ -1,9 +1,10 @@
-<div class="wrapper">
+<div class="wrapper" [ngxThanosSnap]="snap" #thanosElement #thanos="ngxThanosSnap" (snapStarting)="starting()" (snapEnded)="ended()" (rewinded)="rewinded()" class="transparent">
+
     <div class="page-header section-dark" style="background-image: url('assets/img/bg.jpg')">
         <div class="filter"></div>
         <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
         <div class="content-center">
-            <div class="container">
+            <div class="container" >
                 <div class="title-brand">
                     <div class="angular-logo">
                         <!-- <img src="assets/img/angular2-logo.png" alt=""> -->
@@ -20,7 +21,7 @@
                 <h2 class="presentation-subtitle text-center">I know what it’s like to lose. To feel so desperately that you’re right, yet to fail nonetheless. Dread it. Run from it. Destiny still arrives.
                     </h2>
                 <div class="text-center registerbtn">
-                <button  class="btn btn-danger " (click)="register()"  type="button"><i  class="fa fa-user"></i> REGISTER YOUR TEAM</button>
+                <button  class="btn btn-danger " (click)="snap = !snap"  type="button"><i  class="fa fa-user"></i> REGISTER YOUR TEAM</button>
                 
                 </div>
             </div>

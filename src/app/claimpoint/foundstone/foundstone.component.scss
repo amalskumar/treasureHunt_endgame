@@ -1,0 +1,23 @@
+.card{
+    background-color: #ffffff00;
+    color: #ffffff;
+    p{
+      font-size: 21px;
+      font-weight: 400;
+    }
+
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .content-center{
+        margin-top: 100px;
+    }
+    .card p {
+      font-size: 12px;
+      font-weight: 400;
+  }
+      }
+
+      button{
+          cursor: pointer!important;
+      }
