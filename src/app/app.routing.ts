@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'claim-stone', component: FoundstoneComponent, canActivate: [AuthenticationGuard]  },
   { path: 'signup', component: SignupComponent},
   { path: 'claimpoint/:id', component: ClaimpointComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
