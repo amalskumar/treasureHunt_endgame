@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ClaimpointComponent } from './claimpoint/claimpoint.component';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
+import { TriviaComponent } from './trivia/trivia.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'rules', component: RulesComponent },
   { path: 'claim-stone', component: FoundstoneComponent, canActivate: [AuthenticationGuard]  },
   { path: 'signup', component: SignupComponent},
+  { path: 'trivia', component: TriviaComponent},
   { path: 'claimpoint/:id', component: ClaimpointComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },

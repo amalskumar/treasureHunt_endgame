@@ -1,0 +1,41 @@
+
+.quesQues{
+    word-break: break-all;
+    width: 40%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    }
+    .questimer{
+        padding: 25px;
+    }
+    .card {
+        background: #00000036;
+        border: 2px solid #22b4be;
+        color: white;
+        h3{
+            color: white;  
+        }
+    }
+    .triviaButton{
+        text-align: center;
+        margin-top: 20px;
+        .btn{
+            padding: 10px 55px;
+    
+        }
+    }
+    .triviaIns{
+        padding: 35px;
+    }
+
+    .card-body{
+        padding: 38px;   
+    }
+    
+    @media only screen and (max-width: 600px) {
+    .content-center{
+        margin-top: 100px;
+    }
+    .triviaIns{
+        padding: 0px;
+    }
+      }
+    

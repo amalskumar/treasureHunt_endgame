@@ -14,7 +14,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material';
-import { CountdownModule } from 'ngx-countdown';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiserviceService } from './services/apiservice.service';
@@ -26,6 +25,7 @@ import { InsertAuthTokenInterceptor } from './services/insert-auth-token-interce
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CountdownModule } from 'ngx-countdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +35,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FooterComponent,
     ClaimpointComponent,
     FoundstoneComponent,
+    CountdownModule, 
     HomeComponent
   ],
   imports: [
