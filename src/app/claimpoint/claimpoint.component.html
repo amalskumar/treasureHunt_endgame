@@ -10,7 +10,7 @@
                               <div clas="col-lg-10">
                                  <div class="card">
                                      <div *ngIf='stoneAvailability' class="card-body">
-                                       <h3 class="pb-3">Congrats..You found the door to claim the stone!!</h3>
+                                       <h3 class="pb-3">Congrats..You found the door to claim {{stoneName}}!!</h3>
                                        <button class="btn btn-info btn-block btn-round" (click)="redirectRegister()">Not Registered Yet?</button>
                                        <button class="btn btn-success btn-block btn-round"(click)="redirectClaim()">Claim Your Stone</button>
                                      </div>

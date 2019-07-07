@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-home',
@@ -9,18 +9,27 @@ import {Router} from "@angular/router";
 
 export class HomeComponent implements OnInit {
 
-public snap=false;
+    public snap = false;
 
     constructor(private router: Router) { }
 
     ngOnInit() {
-       
+
     }
+
+    rewinded() {
+
+    }
+
+    starting() {
+
+    }
+
     ended() {
         this.register();
-        }
-        
-    register(){
+    }
+
+    register() {
         this.router.navigate(['/signup'])
     }
 }

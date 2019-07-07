@@ -9,8 +9,11 @@
                           <div class="row">
                               <div clas="col-lg-10">
                                  <div class="card">
-                                     <div *ngIf='claimedStone' class="card-body">
-                                        <h3 class="pb-3">You claimed {{claimedStone.StoneName}}. Points will be awarded to your team shortly. Keep up the spirit!</h3>
+                                     <div *ngIf='stoneSuccess' class="card-body">
+                                        <h3 class="pb-3">You claimed {{claimedStone.stoneName}}. Points will be awarded to your team shortly. Keep up the spirit!</h3>
+                                      </div>
+                                     <div *ngIf='!stoneSuccess' class="card-body">
+                                        <h3 class="pb-3">Sorry. {{stoneMessage}}</h3>
                                       </div>
                                    </div>
                               </div>

@@ -9,11 +9,11 @@ import { SignupComponent } from './signup/signup.component';
 import { RulesComponent } from './rules/rules.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material';
 import { CountdownModule } from 'ngx-countdown';
 import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,12 +21,12 @@ import { ApiserviceService } from './services/apiservice.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClaimpointComponent } from './claimpoint/claimpoint.component';
 import { NgxThanosModule } from '@wellwind/ngx-thanos';
-import { MsAdalAngular6Service, MsAdalAngular6Module } from "microsoft-adal-angular6";
+import { MsAdalAngular6Service, MsAdalAngular6Module } from 'microsoft-adal-angular6';
 import { InsertAuthTokenInterceptor } from './services/insert-auth-token-interceptor';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
 
-@NgModule({   
+@NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
@@ -40,7 +40,7 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
-    CountdownModule ,
+    CountdownModule,
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
@@ -55,13 +55,14 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
     HttpClientModule,
     NgxThanosModule,
     MsAdalAngular6Module.forRoot({
-      tenant: '3ec4eda1-a5d1-433d-90da-8dc791283d95',// HRB Tenant
+      tenant: '3ec4eda1-a5d1-433d-90da-8dc791283d95', // HRB Tenant
       clientId: '18d61313-a5d1-4db8-8761-c773b5e48d0d', // EmgGame ID
-      authority: "https://login.microsoftonline.com/3ec4eda1-a5d1-433d-90da-8dc791283d95",
+      authority: 'https://login.microsoftonline.com/3ec4eda1-a5d1-433d-90da-8dc791283d95',
       cacheLocation: 'sessionStorage',
-      redirectUri: 'http://localhost:4200/rules',
-      navigateToLoginRequestUrl:false,
-      })
+      redirectUri: 'http://localhost:4200/claim-stone',
+      postLogoutRedirectUri: 'http://localhost:4200/',
+      navigateToLoginRequestUrl: false,
+    })
 
   ],
   exports: [
@@ -71,13 +72,13 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
     MatRippleModule,
   ],
   entryComponents: [
-],
-  providers: [ApiserviceService,MsAdalAngular6Service,
+  ],
+  providers: [ApiserviceService, MsAdalAngular6Service,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InsertAuthTokenInterceptor,
       multi: true
-    },AuthenticationGuard],
+    }, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
