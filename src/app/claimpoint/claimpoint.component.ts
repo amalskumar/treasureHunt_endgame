@@ -5,7 +5,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 import { DataserviceService, Stone } from '../dataservice.service'
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Router } from '@angular/router';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-claimpoint',
   templateUrl: './claimpoint.component.html',
@@ -19,6 +19,7 @@ export class ClaimpointComponent implements OnInit {
   public stoneAvailability = true;
   constructor(private router: Router,
     private route: ActivatedRoute,
+    private spinner: NgxSpinnerService,
     private apiservice: ApiserviceService,
     private adalSvc: MsAdalAngular6Service,
     private dataService: DataserviceService) {
@@ -30,10 +31,12 @@ export class ClaimpointComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    this.spinner.show();
+}
 
   findStoneOpen() {
     this.apiservice.getStoneAvailable(this.entityId).subscribe((data: IStoneVO) => {
+      this.spinner.hide();
       if (data.available) {
         this.stoneAvailability = true;
         this.stone.stoneName = data.stoneName;

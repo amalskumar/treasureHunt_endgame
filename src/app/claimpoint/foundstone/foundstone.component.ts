@@ -4,7 +4,7 @@ import { ApiserviceService } from './../../services/apiservice.service';
 import { Component, OnInit } from '@angular/core';
 import { DataserviceService } from '../../dataservice.service';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 export class Login {
   email: string;
   token: string;
@@ -34,6 +34,7 @@ export class FoundstoneComponent implements OnInit {
 
   constructor(private datastore: DataserviceService,
     private adalSvc: MsAdalAngular6Service,
+    private spinner: NgxSpinnerService,
     private apiservice: ApiserviceService,
     private dataService: DataserviceService,
     private router: Router) {
@@ -77,7 +78,6 @@ export class FoundstoneComponent implements OnInit {
   getClaimPointID() {
     if (this.dataService.getcliamPointID()) {
       this.claimedStone = this.dataService.getcliamPointID();
-      console.log(this.claimedStone);
       this.claimStone(this.claimedStone.id);
     } else {
       this.router.navigate(['/home']);
@@ -85,7 +85,9 @@ export class FoundstoneComponent implements OnInit {
   }
 
   claimStone(id) {
+    this.spinner.show();
     this.apiservice.claimStone(id).subscribe((data: IStatus) => {
+      this.spinner.hide();
       if (data.status == 'Success') {
         this.stoneSuccess = true;
         this.stoneMessage = data.message;

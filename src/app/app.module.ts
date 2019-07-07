@@ -25,7 +25,7 @@ import { MsAdalAngular6Service, MsAdalAngular6Module } from 'microsoft-adal-angu
 import { InsertAuthTokenInterceptor } from './services/insert-auth-token-interceptor';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +48,7 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
     BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
+    NgxSpinnerModule,
     MatInputModule,
     MatRippleModule,
     FormsModule,
@@ -59,8 +60,8 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
       clientId: '18d61313-a5d1-4db8-8761-c773b5e48d0d', // EmgGame ID
       authority: 'https://login.microsoftonline.com/3ec4eda1-a5d1-433d-90da-8dc791283d95',
       cacheLocation: 'sessionStorage',
-      redirectUri: 'https://endgame.world/claim-stone',
-      postLogoutRedirectUri: 'https://endgame.world/',
+      redirectUri: 'http://localhost:4200/claim-stone',
+      postLogoutRedirectUri: 'http://localhost:4200.world/',
       navigateToLoginRequestUrl: false,
     })
 
