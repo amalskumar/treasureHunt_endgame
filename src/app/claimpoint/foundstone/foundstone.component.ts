@@ -53,8 +53,6 @@ export class FoundstoneComponent implements OnInit {
   checkLogin() {
     if (this.isLoggedIn) {
       this.loginUser();
-      this.getClaimPointID();
-
     } else {
       this.adalSvc.login();
     }
@@ -68,6 +66,7 @@ export class FoundstoneComponent implements OnInit {
       this.apiservice.login(this.loginData).subscribe((data: Points) => {
         if (data) {
           this.dataService.setItem(data);
+          this.getClaimPointID();
         } else {
           this.adalSvc.logout();
         }

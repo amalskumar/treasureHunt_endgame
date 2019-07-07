@@ -59,8 +59,8 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
       clientId: '18d61313-a5d1-4db8-8761-c773b5e48d0d', // EmgGame ID
       authority: 'https://login.microsoftonline.com/3ec4eda1-a5d1-433d-90da-8dc791283d95',
       cacheLocation: 'sessionStorage',
-      redirectUri: 'http://localhost:4200/claim-stone',
-      postLogoutRedirectUri: 'http://localhost:4200/',
+      redirectUri: 'https://endgame.world/claim-stone',
+      postLogoutRedirectUri: 'https://endgame.world/',
       navigateToLoginRequestUrl: false,
     })
 

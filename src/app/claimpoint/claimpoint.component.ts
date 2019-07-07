@@ -22,11 +22,11 @@ export class ClaimpointComponent implements OnInit {
     private apiservice: ApiserviceService,
     private adalSvc: MsAdalAngular6Service,
     private dataService: DataserviceService) {
-      this.stone = new Stone();
-      this.route.paramMap.subscribe((params: ParamMap) => {
-        this.entityId = params.get('id');
-        this.findStoneOpen();
-      });
+    this.stone = new Stone();
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.entityId = params.get('id');
+      this.findStoneOpen();
+    });
   }
 
   ngOnInit() {
@@ -47,7 +47,9 @@ export class ClaimpointComponent implements OnInit {
         this.stoneAvailability = false;
         this.redirectToHome();
       }
-    })
+    }, (error) => {
+      this.redirectToHome();
+    });
   }
 
 

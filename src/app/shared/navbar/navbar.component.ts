@@ -1,3 +1,4 @@
+import { ApiserviceService } from 'app/services/apiservice.service';
 import { Points } from 'app/claimpoint/foundstone/foundstone.component';
 import { DataserviceService } from './../../dataservice.service';
 import { Component, OnInit, ElementRef } from '@angular/core';
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
         private element: ElementRef,
         private dataService: DataserviceService,
         private adalSvc: MsAdalAngular6Service,
+        private apiservice: ApiserviceService
     ) {
         this.isLoggedIn = this.adalSvc.isAuthenticated;
         this.sidebarVisible = false;
@@ -108,7 +110,7 @@ export class NavbarComponent implements OnInit {
     logout() {
         this.dataService.removieItem();
         this.dataService.removeClaimPointID();
+        this.apiservice.logout();
         this.adalSvc.logout();
-
     }
 }
