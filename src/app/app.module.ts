@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material';
 import { CountdownModule } from 'ngx-countdown';
-import { HomeModule } from './home/home.module';
+import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiserviceService } from './services/apiservice.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -35,6 +35,7 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
     FooterComponent,
     ClaimpointComponent,
     FoundstoneComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,6 @@ import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.componen
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
-    HomeModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
