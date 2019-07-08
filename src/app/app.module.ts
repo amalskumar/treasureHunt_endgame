@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CountdownModule } from 'ngx-countdown';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
+import { TriviaComponent } from './trivia/trivia.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiserviceService } from './services/apiservice.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,7 +27,7 @@ import { InsertAuthTokenInterceptor } from './services/insert-auth-token-interce
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { CountdownModule } from 'ngx-countdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +37,8 @@ import { CountdownModule } from 'ngx-countdown';
     FooterComponent,
     ClaimpointComponent,
     FoundstoneComponent,
-    CountdownModule, 
-    HomeComponent
+    HomeComponent,
+    TriviaComponent
   ],
   imports: [
     BrowserModule,
