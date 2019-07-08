@@ -1,4 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiserviceService } from 'app/services/apiservice.service';
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+
+export interface ITrivia{
+  id: number;
+  question: string;
+  choice1: string;
+  choice2: string;
+  choice3: string;
+  choice4: string;
+  selectedChoice: string;
+}
 
 @Component({
   selector: 'app-trivia',
@@ -9,12 +21,29 @@ export class TriviaComponent implements OnInit {
 public startTrivia:boolean=true;
 public activeQuestion;
 public index;
+isLoggedIn;
 public QuesOver:boolean=false;
-  constructor() { }
+public trivia: ITrivia[];
+  constructor(private api: ApiserviceService,private adalSvc: MsAdalAngular6Service,) {
+    // this.isLoggedIn = this.adalSvc.isAuthenticated;
+    // this.checkLogin();
+   }
 
   ngOnInit() {
+    this.startTriviaafterLogin();
+  }
+  // checkLogin() {
+  //   if (this.isLoggedIn) {
+  //     this.startTriviaafterLogin();
+  //   } else {
+  //     this.adalSvc.login();
+  //   }
+  // }
+
+
+  startTriviaafterLogin(){
+    this.getTrivia();
     this.startTrivia=!this.startTrivia;
-    console.log(this.questionArray);
     this.index=0;
     this.showNextQuestion();
   }
@@ -27,51 +56,54 @@ public QuesOver:boolean=false;
   }
   showFinish(){
     this.QuesOver=true;
+    console.log("this.trivia",this.trivia);
   }
   showNextQuestion(){
-    if(this.questionArray.questions.length==this.index){
+
+    if(this.trivia.length==this.index){
       this.showFinish();
     }else{
-      this.activeQuestion=this.questionArray.questions[this.index];
+      this.activeQuestion=this.trivia[this.index];
       this.index++;
     }
-
 }
-
-
-public questionArray={  
-  "questions":[  
-     {  
-        "id":1,
-        "question":"Block Hawkswwwwevvvvvvvvvvvvvvvvvvdfvdgfgsfhfghyhyhtytrytrttyetywewe",
-        "a":"asd",
-        "b":"asd",
-        "c":"asd",
-        "d":"asd"
-     },
-     {  
-        "id":2,
-        "question":"cvvBlock Hawkwewewewewes",
-        "a":"aasd",
-        "b":"asd",
-        "c":"asd",
-        "d":"asd"
-     },
-     {  
-        "id":3,
-        "question":"vvvvBlocxcxcck Hawkweweweryeryetytyteewewes",
-        "a":"aasd",
-        "b":"asd",
-        "c":"asd",
-        "d":"asd"
-     }
-  ]
-};
-
-
-
-
-
+optionSelected(selectedOption){
+  this.trivia[this.index-1].selectedChoice=selectedOption;
+}
+getTrivia(){
+//   this.api.getTrivia().subscribe((data: ITrivia[]) =>{
+// this.trivia=data;
+//   });
+this.trivia = [
+  { 
+    'id': 1,
+    'question': "Questio 1",
+    'choice1': "choice1",
+    'choice2': "choice2",
+    'choice3': "choice3",
+    'choice4': "choice4",
+    'selectedChoice': " "
+  },
+  { 
+    'id': 2,
+    'question': "Questio 2",
+    'choice1': "choice1",
+    'choice2': "choice2",
+    'choice3': "choice3",
+    'choice4': "choice4",
+    'selectedChoice': " "
+  },
+  { 
+    'id': 3,
+    'question': "Questio 3",
+    'choice1': "choice1",
+    'choice2': "choice2",
+    'choice3': "choice3",
+    'choice4': "choice4",
+    'selectedChoice': " "
+  }
+]
+}
 
 
 

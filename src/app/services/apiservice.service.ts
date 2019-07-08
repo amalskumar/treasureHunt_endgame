@@ -53,5 +53,11 @@ export class ApiserviceService {
      return this.http.get(`https://endgame.world/endgameapi/api/v1/login/logout`, httpOptions);
     // return this.http.get(`http://localhost:8080/api/v1/login/logout`, httpOptions);
   }
+
+  getTrivia(){
+    return this.http.get(`https://endgame.world/endgameapi/api/v1/games/trivia`, httpOptions);
+  }
+
+  
 }
 

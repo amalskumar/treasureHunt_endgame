@@ -43,20 +43,23 @@
                                      
                                     <div class="col-lg-12 quesSection ">
                                         <h3 class="card-title p-1 questitle float-left">Question {{activeQuestion.id}}/40</h3>
-                                        <div class="questimer float-right"><countdown  [config]="{leftTime: 5}" (finished)="onFinished()">$!m!:$!s!</countdown></div> 
+                                        <div class="questimer float-right"><countdown  [config]="{leftTime: 10}" (finished)="onFinished()">$!m!:$!s!</countdown></div> 
                                     </div>
                                     <p class="card-text pt-4 pb-4 col-12  quesQues">{{activeQuestion.question}}</p>
                                     <div class="col-lg-12">
-                                        <form>
+                                        <form >
                                             <div class="radio">
-                                              <label><input type="radio" name="optradio" >&nbsp;{{activeQuestion.a}}</label>
+                                              <label><input type="radio"  name="optradio" (click)="optionSelected('a')" >&nbsp;{{activeQuestion.choice1}}</label>
                                             </div>
                                             <div class="radio">
-                                              <label><input type="radio" name="optradio">&nbsp;{{activeQuestion.b}}</label>
+                                              <label><input type="radio"  name="optradio" (click)="optionSelected('b')">&nbsp;{{activeQuestion.choice2}}</label>
                                             </div>
                                             <div class="radio ">
-                                              <label><input type="radio" name="optradio">&nbsp;{{activeQuestion.c}}</label>
+                                              <label><input type="radio"  name="optradio" (click)="optionSelected('c')">&nbsp;{{activeQuestion.choice3}}</label>
                                             </div>
+                                            <div class="radio ">
+                                                <label><input type="radio"  name="optradio" (click)="optionSelected('d')">&nbsp;{{activeQuestion.choice4}}</label>
+                                              </div>
                                           </form>
                                     </div>
                                     <div class="col-lg-12 text-right">
