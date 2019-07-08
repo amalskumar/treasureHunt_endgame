@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from 'app/services/apiservice.service';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export interface ITrivia{
   id: number;
@@ -22,15 +23,20 @@ public startTrivia:boolean=true;
 public activeQuestion;
 public index;
 isLoggedIn;
+triviaForm: FormGroup;
+
 public QuesOver:boolean=false;
 public trivia: ITrivia[];
-  constructor(private api: ApiserviceService,private adalSvc: MsAdalAngular6Service,) {
+  constructor(private api: ApiserviceService,private adalSvc: MsAdalAngular6Service, private formBuilder: FormBuilder,) {
     // this.isLoggedIn = this.adalSvc.isAuthenticated;
     // this.checkLogin();
    }
 
   ngOnInit() {
     this.startTriviaafterLogin();
+    this.triviaForm = this.formBuilder.group({
+      optradio: ['', Validators.required],
+    })
   }
   // checkLogin() {
   //   if (this.isLoggedIn) {
@@ -59,17 +65,21 @@ public trivia: ITrivia[];
     console.log("this.trivia",this.trivia);
   }
   showNextQuestion(){
-
     if(this.trivia.length==this.index){
       this.showFinish();
     }else{
       this.activeQuestion=this.trivia[this.index];
       this.index++;
+      console.log(this.index);
+      if(this.index>1){
+      this.triviaForm.reset();
+      }
     }
 }
 optionSelected(selectedOption){
   this.trivia[this.index-1].selectedChoice=selectedOption;
 }
+
 getTrivia(){
 //   this.api.getTrivia().subscribe((data: ITrivia[]) =>{
 // this.trivia=data;
