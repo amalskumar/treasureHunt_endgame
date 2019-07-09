@@ -3,7 +3,7 @@ import { ApiserviceService } from 'app/services/apiservice.service';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-export interface ITrivia{
+export class ITrivia {
   id: number;
   question: string;
   choice1: string;
@@ -19,21 +19,21 @@ export interface ITrivia{
   styleUrls: ['./trivia.component.scss']
 })
 export class TriviaComponent implements OnInit {
-public startTrivia:boolean=true;
-public activeQuestion;
-public index;
-isLoggedIn;
-triviaForm: FormGroup;
+  public startTrivia: boolean = true;
+  public activeQuestion;
+  public index;
+  isLoggedIn;
+  triviaForm: FormGroup;
 
-public QuesOver:boolean=false;
-public trivia: ITrivia[];
-  constructor(private api: ApiserviceService,private adalSvc: MsAdalAngular6Service, private formBuilder: FormBuilder,) {
+  public QuesOver: boolean = false;
+  public trivia: ITrivia[] = [];
+  constructor(private api: ApiserviceService, private adalSvc: MsAdalAngular6Service, private formBuilder: FormBuilder, ) {
     // this.isLoggedIn = this.adalSvc.isAuthenticated;
     // this.checkLogin();
-   }
+    this.getTrivia();
+  }
 
   ngOnInit() {
-    this.startTriviaafterLogin();
     this.triviaForm = this.formBuilder.group({
       optradio: ['', Validators.required],
     })
@@ -47,73 +47,48 @@ public trivia: ITrivia[];
   // }
 
 
-  startTriviaafterLogin(){
-    this.getTrivia();
-    this.startTrivia=!this.startTrivia;
-    this.index=0;
+  startTriviaafterLogin() {
+    this.startTrivia = !this.startTrivia;
+    this.index = 0;
     this.showNextQuestion();
   }
-  onFinished(){
+  onFinished() {
     this.showFinish();
   }
 
-  playTrivia(){
-    this.startTrivia=!this.startTrivia;
+  playTrivia() {
+    this.startTrivia = !this.startTrivia;
   }
-  showFinish(){
-    this.QuesOver=true;
-    console.log("this.trivia",this.trivia);
+  showFinish() {
+    this.QuesOver = true;
   }
-  showNextQuestion(){
-    if(this.trivia.length==this.index){
+  showNextQuestion() {
+    if (this.trivia.length == this.index) {
       this.showFinish();
-    }else{
-      this.activeQuestion=this.trivia[this.index];
+    } else {
+      this.activeQuestion = this.trivia[this.index];
       this.index++;
-      console.log(this.index);
-      if(this.index>1){
-      this.triviaForm.reset();
+      if (this.index > 1) {
+        this.triviaForm.reset();
       }
     }
-}
-optionSelected(selectedOption){
-  this.trivia[this.index-1].selectedChoice=selectedOption;
-}
-
-getTrivia(){
-//   this.api.getTrivia().subscribe((data: ITrivia[]) =>{
-// this.trivia=data;
-//   });
-this.trivia = [
-  { 
-    'id': 1,
-    'question': "Questio 1",
-    'choice1': "choice1",
-    'choice2': "choice2",
-    'choice3': "choice3",
-    'choice4': "choice4",
-    'selectedChoice': " "
-  },
-  { 
-    'id': 2,
-    'question': "Questio 2",
-    'choice1': "choice1",
-    'choice2': "choice2",
-    'choice3': "choice3",
-    'choice4': "choice4",
-    'selectedChoice': " "
-  },
-  { 
-    'id': 3,
-    'question': "Questio 3",
-    'choice1': "choice1",
-    'choice2': "choice2",
-    'choice3': "choice3",
-    'choice4': "choice4",
-    'selectedChoice': " "
   }
-]
-}
+  optionSelected(selectedOption) {
+    this.trivia[this.index - 1].selectedChoice = selectedOption;
+  }
+
+  getTrivia() {
+    this.api.getTrivia().subscribe((data: ITrivia[]) => {
+      if (data) {
+        this.trivia = data;
+        this.startTriviaafterLogin();
+      }
+    });
+  }
+
+  postTrivia() {
+
+  }
 
 
 
