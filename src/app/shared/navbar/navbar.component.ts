@@ -113,4 +113,17 @@ export class NavbarComponent implements OnInit {
         this.apiservice.logout();
         this.adalSvc.logout();
     }
+
+    updatePoints(){
+        this.apiservice.updateScore().subscribe((data: Points) => {
+            if(data) {
+                this.dataService.setItem(data);
+            } 
+            (error) => {
+                if(error) {
+                    
+                }
+            }
+        })
+    }
 }

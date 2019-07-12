@@ -26,19 +26,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
 
     }
-
-    ended() {
-        this.spinner.hide();
-        this.register();
-    }
-
-    rewinded() {
-
-    }
-
-    starting() {
-        this.spinner.show();
-    }
+    
     register() {
         this.router.navigate(['/signup'])
     }
