@@ -9,7 +9,10 @@ export class Login {
     email: string;
     token: string;
   }
-  
+  export class Points {
+    teamName: string;
+    points: number;
+  }
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
