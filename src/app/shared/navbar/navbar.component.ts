@@ -87,6 +87,16 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+    isPlay() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+
+        if (titlee === '/landing') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     isClaimGift() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
 
@@ -113,7 +123,9 @@ export class NavbarComponent implements OnInit {
         this.apiservice.logout();
         this.adalSvc.logout();
     }
-
+redirectToPlay(){
+    window.location.href="/landing";
+}
     updatePoints(){
         this.apiservice.updateScore().subscribe((data: Points) => {
             if(data) {

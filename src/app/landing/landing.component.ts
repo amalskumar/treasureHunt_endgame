@@ -2,6 +2,9 @@ import { Component, OnInit, NgZone  } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { GamepanelComponent } from 'app/gamepanel/gamepanel.component';
 import{DataserviceService} from 'app/dataservice.service'
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { Router } from '@angular/router';
+
 export interface DialogData {
   countrySelected:string;
 }
@@ -17,16 +20,23 @@ flag:boolean=false;
 originalCountry: any ='INDIA';
   
   countrySelected;
+  isLoggedIn: boolean;
 
 
-  constructor(private _ngZone: NgZone,public dialog: MatDialog,private dataService:DataserviceService) { 
+  constructor(private router: Router,private _ngZone: NgZone,private adalSvc: MsAdalAngular6Service,public dialog: MatDialog,private dataService:DataserviceService) { 
     window["angularComponent"] = this;
- 
+    this.isLoggedIn = this.adalSvc.isAuthenticated;
+    this.loginCheck();
   }
 
   ngOnInit() {
   
 
+  }
+  loginCheck(){
+    if(!this.isLoggedIn){
+      this.router.navigate(['/home'])
+    }
   }
   showPopup(){
     this.countrySelected=window["country"];

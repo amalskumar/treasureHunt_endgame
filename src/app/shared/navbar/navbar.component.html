@@ -24,22 +24,17 @@
     </div>
     <div class="navbar-collapse navbar-transparent " id="navbarToggler">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a
-            [routerLink]="['/signup']"
-            class="nav-link"
-            (click)="sidebarToggle()"
-            ><i class="nc-icon nc-tap-01"></i>SIGNUP</a
-          >
+       
+        <li class="nav-item">
+          <a  (click)="redirectToPlay()" class="nav-link"><i class="nc-icon nc-button-play"></i>PLAY</a>         
         </li>
         <li class="nav-item">
-          <a
-            [routerLink]="['/rules']"
-            class="nav-link"
-            (click)="sidebarToggle()"
-            ><i class="nc-icon nc-bullet-list-67"></i>INSTRUCTIONS</a
-          >
+          <a [routerLink]="['/trivia']" class="nav-link"><i class="nc-icon nc-time-alarm"></i>TRIVIA</a>
         </li>
+        <li class="nav-item">
+          <a [routerLink]="['/rules']" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>INSTRUCTIONS</a>
+        </li>
+
         <div *ngIf="isLoggedIn" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"
             data-toggle="dropdown"
@@ -57,6 +52,7 @@
           </ul>
 
         </div>
+     
       </ul>
     </div>
   </div>
