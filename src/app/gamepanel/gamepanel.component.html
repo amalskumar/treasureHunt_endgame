@@ -1,3 +1,56 @@
-<p>
-  gamepanel works!
-</p>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 border-green text-center">
+        <span class="indicator text-center " >LOCATION</span>
+        <h2 class="sighting-title text-center" style="font-size: 30px">{{data.countrySelected}}</h2>
+      </div>
+  
+      <div class="col-lg-12  border-green p-0">
+       <div class="panelinfo">
+  <div class="row">
+    <div class="col-lg-2 treasureGif">
+      <img src="../../assets/img/marvel.gif" width="107px" height="100px">
+    </div>
+    <div class="col-lg-4 treasureClue">
+  <p>{{desc}}</p>
+      </div>
+    <div class="col-lg-6 text-center">
+       <span class="treasureQes">Who the father of nation?Whi gggggggggggggggggggggggggggggggggggggggggggggggggggggggch is your country?</span>
+      </div>
+  </div>
+       </div>
+      </div>
+  
+  
+  
+  
+      <div class="col-lg-12 border-green gridbg">
+        <div class="gradient-back">
+          <div class="syfy left m-auto">
+              <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="answer"  placeholder="Enter Key!">
+                    <small id="emailHelp" class="form-text text-muted">Enter the key to move forward!</small>
+                  </div>
+                  </form>
+          </div>
+  
+        </div>
+        </div>
+      </div>
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">CLOSE</button>
+      <button mat-button (click)="Submit()">SUBMIT</button>
+    </div>
+    </div>
+  
+   
+  
+  
+  
+  
+   
+      
