@@ -1,79 +1,192 @@
 <div class="wrapper">
-    <div class="page-header" style="background-image: url('./assets/img/register.jpg');">
-        <div class="filter"></div>
-        <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-sm-6 mr-auto ml-auto">
-                      <div class="card card-register">
-                         
-                          <div class="social-line text-center">
-                             <img src="../../assets/img/endgame.png" style="width:50%;">
-                          </div>
+  <div
+    class="page-header"
+    style="background-image: url('./assets/img/register.jpg');"
+  >
+    <div class="filter"></div>
+    <div
+      class="moving-clouds"
+      style="background-image: url('assets/img/clouds.png'); "
+    ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-6 mr-auto ml-auto">
+          <div class="card card-register">
+            <div class="social-line text-center">
+              <img src="../../assets/img/endgame.png" style="width:50%;" />
+            </div>
 
-<div *ngIf="registerSuccess && success" class="successSection text-center pt-5">
-    <img src="../../assets/img/congrats.png" width="50%">
-<p class="pt-2">{{signupData.message}}</p>
-</div>
+            <div
+              *ngIf="registerSuccess && success"
+              class="successSection text-center pt-5"
+            >
+              <img src="../../assets/img/congrats.png" width="50%" />
+              <h6 class="pt-2">{{ signupData.message }}</h6>
+            </div>
 
-<div *ngIf="registerSuccess && !success" class="successSection text-center pt-5">
-    <h3 class="pt-2 pb-3">Sorry!</h3>
-    <p class="pt-2">{{signupData.message}}</p>
-    </div>
+            <div
+              *ngIf="registerSuccess && !success"
+              class="successSection text-center pt-5"
+            >
+              <h3 class="pt-2 pb-3">Sorry!</h3>
+              <h6 class="pt-2">{{ signupData.message }}</h6>
+            </div>
 
-
-
-
-
-
-
-
-                          <form *ngIf="!registerSuccess" class="register-form" [formGroup]="registerForm">
-                              <div class="row">
-                              <div class="col-lg-6">
-                                    <label>TEAM NAME</label>
-                                    <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                        <input type="text" required class="form-control" placeholder="Team Name" formControlName="teamNameCtrl" (focus)="focus=true" (blur)="focus=false" >
-                                    </div>
-                                    <p *ngIf="!isFormValid && registerForm.get('teamNameCtrl').invalid">Please enter a Team Name</p>
-                              </div>
-                              
-                              <div class="col-lg-6">
-                              <label>TEAM MEMBERS</label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                  <input type="text" class="form-control" required placeholder="member1@hrblock.com" formControlName="teamMember1emailCtrl" (focus)="focus1=true" (blur)="focus1=false" >
-                              </div>
-                              <p *ngIf="!isFormValid && registerForm.get('teamMember1emailCtrl').invalid">Please enter a valid H&R Block email</p>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <input type="text" class="form-control" placeholder="member2@hrblock.com" (focus)="focus1=true" formControlName="teamMember2emailCtrl" (blur)="focus1=false" >
-                            </div>
-                            <p *ngIf="!isFormValid && registerForm.get('teamMember2emailCtrl').invalid">Please enter a valid H&R Block email</p>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <input type="text" class="form-control" placeholder="member3@hrblock.com" (focus)="focus1=true" formControlName="teamMember3emailCtrl" (blur)="focus1=false" >
-                            </div>
-                            <p *ngIf="!isFormValid && registerForm.get('teamMember3emailCtrl').invalid">Please enter a valid H&R Block email</p>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <input type="text" class="form-control" placeholder="member4@hrblock.com" (focus)="focus1=true" formControlName="teamMember4emailCtrl" (blur)="focus1=false" >
-                            </div>
-                            <p *ngIf="!isFormValid && registerForm.get('teamMember4emailCtrl').invalid">Please enter a valid H&R Block email</p>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <input type="text" class="form-control" placeholder="member5@hrblock.com" (focus)="focus1=true" formControlName="teamMember5emailCtrl" (blur)="focus1=false" >
-                            </div>
-                            <p *ngIf="!isFormValid && registerForm.get('teamMember5emailCtrl').invalid">Please enter a valid H&R Block email</p>
-                            
-                              </div>
-                              <div class="col-lg-12">
-                                    <div class="rebutton">
-                                            <button class="btn btn-danger btn-block btn-round" (click)="signUp()">Register</button>
-                                            
-                                        </div>
-                              </div>
-                            </div>
-                          </form>
-                      </div>
-                    </div>
+            <form
+              *ngIf="!registerSuccess"
+              class="register-form"
+              [formGroup]="registerForm"
+            >
+              <div class="row">
+                <div class="col-lg-6">
+                  <label>TEAM NAME</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <input
+                      type="text"
+                      required
+                      class="form-control"
+                      placeholder="Team Name"
+                      formControlName="teamNameCtrl"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      !isFormValid && registerForm.get('teamNameCtrl').invalid
+                    "
+                  >
+                    Please enter a Team Name
+                  </p>
                 </div>
 
-            </div>
+                <div class="col-lg-6">
+                  <label>TEAM MEMBERS</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <input
+                      type="text"
+                      class="form-control"
+                      required
+                      placeholder="member1@hrblock.com"
+                      formControlName="teamMember1emailCtrl"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      !isFormValid &&
+                      registerForm.get('teamMember1emailCtrl').invalid
+                    "
+                  >
+                    Please enter a valid H&R Block email
+                  </p>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="member2@hrblock.com"
+                      (focus)="focus1 = true"
+                      formControlName="teamMember2emailCtrl"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      !isFormValid &&
+                      registerForm.get('teamMember2emailCtrl').invalid
+                    "
+                  >
+                    Please enter a valid H&R Block email
+                  </p>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="member3@hrblock.com"
+                      (focus)="focus1 = true"
+                      formControlName="teamMember3emailCtrl"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      !isFormValid &&
+                      registerForm.get('teamMember3emailCtrl').invalid
+                    "
+                  >
+                    Please enter a valid H&R Block email
+                  </p>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="member4@hrblock.com"
+                      (focus)="focus1 = true"
+                      formControlName="teamMember4emailCtrl"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      !isFormValid &&
+                      registerForm.get('teamMember4emailCtrl').invalid
+                    "
+                  >
+                    Please enter a valid H&R Block email
+                  </p>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="member5@hrblock.com"
+                      (focus)="focus1 = true"
+                      formControlName="teamMember5emailCtrl"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                  <p
+                    *ngIf="
+                      !isFormValid &&
+                      registerForm.get('teamMember5emailCtrl').invalid
+                    "
+                  >
+                    Please enter a valid H&R Block email
+                  </p>
+                </div>
+                <div class="col-lg-12">
+                  <div class="rebutton">
+                    <button
+                      class="btn btn-danger btn-block btn-round"
+                      (click)="signUp()"
+                    >
+                      Register
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

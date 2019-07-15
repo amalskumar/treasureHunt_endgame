@@ -41,23 +41,23 @@ export class ApiserviceService {
   login(user: Login) {
     const body = JSON.stringify(user);
     return this.http.post(`https://endgame.world/endgameapi/api/v1/login`, body);
-   // return this.http.post(`http://localhost:8080/api/v1/login`, body, httpOptions);
+    // return this.http.post(`http://localhost:8080/api/v1/login`, body, httpOptions);
   }
 
   updateScore() {
-     return this.http.get(`https://endgame.world/endgameapi/api/v1/points`, httpOptions);
-  // return this.http.get(`http://localhost:8080/api/v1/points`, httpOptions);
+    return this.http.get(`https://endgame.world/endgameapi/api/v1/points`, httpOptions);
+    // return this.http.get(`http://localhost:8080/api/v1/points`, httpOptions);
   }
 
   logout() {
-     return this.http.get(`https://endgame.world/endgameapi/api/v1/login/logout`, httpOptions);
+    return this.http.get(`https://endgame.world/endgameapi/api/v1/login/logout`, httpOptions);
     // return this.http.get(`http://localhost:8080/api/v1/login/logout`, httpOptions);
   }
 
-  getTrivia(){
+  getTrivia() {
     return this.http.get(`https://endgame.world/endgameapi/api/v1/games/trivia`, httpOptions);
   }
 
-  
+
 }
 

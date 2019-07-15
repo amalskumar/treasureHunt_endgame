@@ -72,6 +72,8 @@ export class FoundstoneComponent implements OnInit {
           this.adalSvc.logout();
         }
       })
+    } else {
+      this.getClaimPointID();
     }
   }
 
@@ -95,11 +97,14 @@ export class FoundstoneComponent implements OnInit {
           if (null != point.teamName) {
             this.dataService.setItem(point);
           }
-
         })
       } else if (data.status == 'Fail') {
         this.stoneSuccess = false;
         this.stoneMessage = data.message;
+        if (this.isLoggedIn) {
+          this.dataService.removieItem();
+          this.adalSvc.logout();
+        }
       } else {
         this.router.navigate(['/home']);
       }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ApiserviceService } from 'app/services/apiservice.service';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 
 export class Register {
@@ -30,15 +30,12 @@ export class SignupComponent implements OnInit {
     registerData: Register;
     registerForm: FormGroup;
     isFormValid = true;
-    constructor(private formBuilder: FormBuilder, private api: ApiserviceService, private router:Router) {
+    constructor(private formBuilder: FormBuilder, private api: ApiserviceService, private router: Router) {
         this.registerData = new Register();
 
     }
 
     ngOnInit() {
-       
-
-
         this.registerForm = this.formBuilder.group({
             teamNameCtrl: ['', Validators.required],
             teamMember1emailCtrl: ['', [Validators.required,
@@ -60,6 +57,7 @@ export class SignupComponent implements OnInit {
             this.registerData.teamMember3email = this.registerForm.value.teamMember3emailCtrl;
             this.registerData.teamMember4email = this.registerForm.value.teamMember4emailCtrl;
             this.registerData.teamMember5email = this.registerForm.value.teamMember5emailCtrl;
+
             this.api.registerUser(this.registerData).subscribe((data: Response) => {
                 this.registerSuccess = true;
                 if (data) {
@@ -72,17 +70,16 @@ export class SignupComponent implements OnInit {
                 } else {
                     this.success = false;
                 }
-            }
+            }, (error) => {
+                this.success = false;
+            },
             );
-        }else {
+        } else {
             this.isFormValid = false;
         }
     }
 
-
-
-
-    redirectRules(){
+    redirectRules() {
         this.router.navigate(['/rules'])
     }
 }

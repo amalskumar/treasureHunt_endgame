@@ -21,7 +21,7 @@
                 <h2 class="presentation-subtitle text-center">I know what it’s like to lose. To feel so desperately that you’re right, yet to fail nonetheless. Dread it. Run from it. Destiny still arrives.
                     </h2>
                 <div class="text-center registerbtn">
-                <button *ngIf="!isLoggedIn" class="btn btn-danger "  type="button"><i  class="fa fa-user"></i> REGISTER YOUR TEAM</button>
+                <button *ngIf="!isLoggedIn" class="btn btn-danger " type="button" (click)="register()"><i  class="fa fa-user"></i> REGISTER YOUR TEAM</button>
                 
                 </div>
             </div>
