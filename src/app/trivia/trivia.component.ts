@@ -59,7 +59,6 @@ public trivia: ITrivia[];
     console.log("this.trivia",this.trivia);
   }
   showNextQuestion(){
-
     if(this.trivia.length==this.index){
       this.showFinish();
     }else{

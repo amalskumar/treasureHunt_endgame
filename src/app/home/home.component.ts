@@ -11,7 +11,6 @@ import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 
 export class HomeComponent implements OnInit {
 
-    public snap = false;
     public teamData: Points;
     username;
     isLoggedIn = false;
