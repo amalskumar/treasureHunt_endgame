@@ -8,12 +8,12 @@
             <div class="row">
 
             
-      <div class="col-lg-4 pt-5">
+      <div class="col-lg-4 pt-5 marginTop">
 
-        <div class="card" >
-          <img class="card-img-top" src="assets/img/team.png" alt="Card image" style="width:100%">
-          <div class="card-body">
-            <h1>31</h1>Points
+        <div class="card pt-4" >
+          <img class="card-img-top m-auto" src="assets/img/team.png" alt="Card image" style="width:60%">
+          <div class="card-body text-center">
+            <span class="pointSection"><h1>31</h1>Total Points</span>
             <h4 class="card-title">John Doe</h4>
             <p>amal.sasikumar@hrblock.com</p>
             <p>amal.ajayakumar@hrblock.com</p>
@@ -22,6 +22,28 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-7 pt-5 marginTop">
+
+          <div class="card" *ngIf="topTen">
+            <div class="card-body text-center">
+                <h5>TOP 10 TEAMS</h5>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>TEAM</th>
+                        <th>POINTS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let topten of topTen">
+                        <td>{{topten.teamName}}</td>
+                        <td>{{topten.points}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
       </div>
              
               

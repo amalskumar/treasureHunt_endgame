@@ -50,8 +50,8 @@ export class ApiserviceService {
 
   }
   getQuestion() {
-     //return this.http.get(`https://itcdevapp01:8443/endgameapi/api/v1/question`, httpOptions);
-     return this.http.get(`http://localhost:8080/api/v1/question`, httpOptions);
+     return this.http.get(`https://itcdevapp01:8443/endgameapi/api/v1/question`, httpOptions);
+    //  return this.http.get(`http://localhost:8080/api/v1/question`, httpOptions);
 
   }
 
@@ -63,8 +63,8 @@ export class ApiserviceService {
   }
 
   getTopTeams() {
-    // return this.http.get(`https://itcdevapp01:8443/endgameapi/api/v1/points/top`, httpOptions);
-    return this.http.get(`http://localhost:8080/api/v1/points/top`, httpOptions);
+    return this.http.get(`https://itcdevapp01:8443/endgameapi/api/v1/points/top`, httpOptions);
+    // return this.http.get(`http://localhost:8080/api/v1/points/top`, httpOptions);
 
   }
 
