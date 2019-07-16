@@ -27,6 +27,8 @@ export interface IStatus {
 export class DataserviceService {
   public stone: Stone;
   itemValue = new Subject();
+  valueChanged = new Subject();
+
   claimID;
 
   constructor() {
@@ -45,6 +47,11 @@ export class DataserviceService {
   removieItem() {
     localStorage.removeItem('teamData');
   }
+
+  callValueChange(data) {
+    this.valueChanged.next(data);
+  }
+
 }
 
 

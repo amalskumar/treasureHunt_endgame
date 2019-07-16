@@ -31,21 +31,20 @@ export class LandingComponent implements OnInit {
     this.questionData = new Question();
     window['angularComponent'] = this;
     this.isLoggedIn = this.adalSvc.isAuthenticated;
-    this.getQuestion();
+    this.getQuestionUpdate();
   }
 
   ngOnInit() {
-
-
+    this.dataService.callValueChange('Call back');
   }
 
   showPopup() {
-    if(this.originalCountry){
+    if (this.originalCountry) {
       this.countrySelected = window['country'];
       if (this.originalCountry == this.countrySelected) {
         this.openDialog();
       }
-    } 
+    }
   }
 
 
@@ -66,8 +65,13 @@ export class LandingComponent implements OnInit {
       if (data) {
         this.questionData = data;
         this.originalCountry = data.country;
-        console.log(data);
       }
+    })
+  }
+
+  getQuestionUpdate() {
+    this.dataService.valueChanged.subscribe(data => {
+      this.getQuestion();
     })
   }
 
