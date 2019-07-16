@@ -32,7 +32,7 @@
           <a [routerLink]="['/rules']" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>INSTRUCTIONS</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
-          <a [routerLink]="['/login']" class="nav-link"><i class="nc-icon nc-single-02"></i>LOGIN</a>
+          <a class="nav-link" (click)="login()"><i class="nc-icon nc-single-02"></i>LOGIN</a>
         </li>
 
         <div *ngIf="isLoggedIn" class="nav-item dropdown">

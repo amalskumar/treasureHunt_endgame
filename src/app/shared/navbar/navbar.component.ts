@@ -107,6 +107,10 @@ export class NavbarComponent implements OnInit {
         this.adalSvc.logout();
     }
 
+    login() {
+        this.adalSvc.login();
+    }
+
     redirectToPlay() {
         window.location.href = '/game';
     }
@@ -140,4 +144,6 @@ export class NavbarComponent implements OnInit {
         } else {
         }
     }
+
+
 }

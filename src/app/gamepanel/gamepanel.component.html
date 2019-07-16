@@ -13,13 +13,13 @@
       <img src="../../assets/img/marvel.gif" width="107px" height="100px">
     </div>
     <div class="col-lg-4 treasureClue" *ngIf="data?.QuestionData?.hint">
-    <p>{{data?.QuestionData?.hint}}</p>
+    <p>{{data?.questionData?.hint}}</p>
       </div>
     <div class="col-lg-4 treasureClue" *ngIf="data?.QuestionData?.keyHint">
-    <p>{{data?.QuestionData?.keyHint}}</p>
+    <p>{{data?.questionData?.keyHint}}</p>
       </div>
     <div class="col-lg-6 text-center">
-       <span class="treasureQes">{{data?.QuestionData?.question}}</span>
+       <span class="treasureQes">{{data?.questionData?.question}}</span>
       </div>
   </div>
        </div>
@@ -33,8 +33,8 @@
           <div class="syfy left m-auto">
               <form>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="answer" placeholder="Enter Key!">
-                    <small id="emailHelp" class="form-text text-muted">Enter the key to move forward!</small>
+                    <input type="text" class="form-control" [(ngModel)]="answerValue" name="answerValue" id="answer" placeholder="Enter Key!">
+                    <small id="emailHelp" class="form-text text-muted">{{statusMessage}}</small>
                   </div>
                   </form>
           </div>

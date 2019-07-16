@@ -8,6 +8,7 @@ import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Router } from '@angular/router';
 
 export interface DialogData {
+  questionData: Question;
   countrySelected: string;
 }
 @Component({
@@ -59,7 +60,7 @@ export class LandingComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(GamepanelComponent, {
       width: '90%',
-      data: { countrySelected: this.countrySelected, QuestionData: this.questionData }
+      data: { questionData: this.questionData, countrySelected: this.countrySelected }
     });
 
     dialogRef.afterClosed().subscribe(result => {

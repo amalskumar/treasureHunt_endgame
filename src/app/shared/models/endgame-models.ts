@@ -28,3 +28,8 @@ export class Answer {
     answer: string;
     teamName: string;
 }
+
+export class QuestionObject {
+    QuestionData: Question;
+    countrySelected: string;
+}

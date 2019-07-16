@@ -51,8 +51,15 @@ export class ApiserviceService {
 
   postAnswer(answerData: Answer) {
     const body = JSON.stringify(answerData);
-    return this.http.post(`http://localhost:8080/api/v1/question`, body, httpOptions);
+    return this.http.post(`http://localhost:8080/api/v1/answer`, body, httpOptions);
   }
 
+  getTopTeams() {
+    return this.http.get(`http://localhost:8080/api/v1/points/top`, httpOptions);
+  }
+
+  getTeamDetails() {
+    return this.http.get(`http://localhost:8080/api/v1/points/myteam`, httpOptions);
+  }
 }
 

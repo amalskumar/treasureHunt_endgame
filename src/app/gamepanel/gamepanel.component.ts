@@ -1,5 +1,5 @@
 import { ApiserviceService } from 'app/services/apiservice.service';
-import { Answer, Question } from './../shared/models/endgame-models';
+import { Answer, Question, QuestionObject, Response } from './../shared/models/endgame-models';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LandingComponent, DialogData } from 'app/landing/landing.component';
@@ -10,9 +10,12 @@ import { LandingComponent, DialogData } from 'app/landing/landing.component';
 })
 export class GamepanelComponent implements OnInit {
 
+  answerValue;
   desc = "Lorem Ipsum has been the industry's standard dummy text ever since the 1500shanged";
+  statusMessage = 'Enter the key to move forward!';
   answer: string;
   answerData: Answer;
+  DialogData: QuestionObject;
   ngOnInit() {
   }
 
@@ -20,7 +23,7 @@ export class GamepanelComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<LandingComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private apiservice: ApiserviceService) {
-    console.log(data);
+
     this.answerData = new Answer();
   }
 
@@ -28,11 +31,27 @@ export class GamepanelComponent implements OnInit {
     this.dialogRef.close();
   }
   Submit() {
-
-    this.answer = document.getElementById('answer').value;
-    this.answerData.answer = this.answer;
-    this.apiservice.postAnswer(this.answerData).subscribe(data => {
-      
+    this.answerData.answer = this.answerValue;
+    this.getTeamData();
+    this.apiservice.postAnswer(this.answerData).subscribe((data: Response) => {
+      if(data.status == 'Success'){
+        this.statusMessage = data.message;
+        this.getQuestion();
+      } else if (data.status == 'Fail') {
+        this.statusMessage = 'You have entered the wrong key. Please try again.'
+      }
     });
+  }
+
+  getQuestion(){
+    this.apiservice.getQuestion().subscribe((data:Question) => {
+      this.data.questionData = data;
+    })
+  }
+  
+  getTeamData() {
+    this.apiservice.getTeamDetails().subscribe(data => {
+      console.log(data);
+    })
   }
 }
