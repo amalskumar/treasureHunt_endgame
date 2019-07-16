@@ -40,22 +40,15 @@ export class LandingComponent implements OnInit {
   }
 
   showPopup() {
-    this.countrySelected = window['country'];
-    if (this.originalCountry == this.countrySelected) {
-      this.openDialog();
-    }
+    if(this.originalCountry){
+      this.countrySelected = window['country'];
+      if (this.originalCountry == this.countrySelected) {
+        this.openDialog();
+      }
+    } 
   }
 
-  // runThisFunctionFromInside(){
 
-  //   this.country=window['country'];
-  //   console.log('country selected', this.country);
-  //   if(this.flag==false){
-  //     this.flag=true;
-  //     this.openDialog();
-  //   } 
-  //   return true
-  // }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(GamepanelComponent, {

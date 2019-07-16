@@ -28,6 +28,7 @@ import { LandingComponent } from './landing/landing.component';
 import { GamepanelComponent } from './gamepanel/gamepanel.component';
 import { LoginComponent } from './shared/login/login.component';
 import { LogoutComponent } from './shared/logout/logout.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { LogoutComponent } from './shared/logout/logout.component';
     GamepanelComponent,
     TriviaComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,

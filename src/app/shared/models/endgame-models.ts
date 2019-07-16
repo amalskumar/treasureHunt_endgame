@@ -12,7 +12,6 @@ export class Response {
     status: string;
     message: string;
 }
-
 export class Question {
     question: string;
     hint: string;
@@ -22,6 +21,7 @@ export class Question {
     fileQuestion: boolean;
     url: string;
     country: string;
+    showHint: boolean;
 }
 
 export class Answer {

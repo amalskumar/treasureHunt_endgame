@@ -12,10 +12,10 @@
     <div class="col-lg-2 treasureGif">
       <img src="../../assets/img/marvel.gif" width="107px" height="100px">
     </div>
-    <div class="col-lg-4 treasureClue" *ngIf="data?.QuestionData?.hint">
+    <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.hint">
     <p>{{data?.questionData?.hint}}</p>
       </div>
-    <div class="col-lg-4 treasureClue" *ngIf="data?.QuestionData?.keyHint">
+    <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.keyHint">
     <p>{{data?.questionData?.keyHint}}</p>
       </div>
     <div class="col-lg-6 text-center">
@@ -34,7 +34,7 @@
               <form>
                   <div class="form-group">
                     <input type="text" class="form-control" [(ngModel)]="answerValue" name="answerValue" id="answer" placeholder="Enter Key!">
-                    <small id="emailHelp" class="form-text text-muted">{{statusMessage}}</small>
+                    <small id="emailHelp" class="form-text statusmsg">{{statusMessage}}</small>
                   </div>
                   </form>
           </div>
@@ -47,13 +47,17 @@
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">CLOSE</button>
 
-      <div *ngIf="data?.QuestionData?.url">
+      <div *ngIf="data?.questionData?.showHint">
+      <button mat-button (click)="hintClick()">HINT</button>
+      </div>
+
+      <div *ngIf="data?.questionData?.url">
         <button mat-button (click)="Submit()">DOWNLOAD</button>
       </div>
    
 
       <span  class="spacer"></span>
-        <button mat-button (click)="Submit()">SUBMIT</button>
+        <button mat-button [disabled]="!data.questionData.canAnswer" (click)="Submit()">SUBMIT</button>
     </div>
     </div>
   
