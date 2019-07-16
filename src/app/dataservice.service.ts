@@ -1,7 +1,6 @@
-import { ApiserviceService } from 'app/services/apiservice.service';
+import { Points } from './shared/login/login.component';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Points } from './claimpoint/foundstone/foundstone.component';
 
 export class Stone {
   id: number;
@@ -46,18 +45,6 @@ export class DataserviceService {
   removieItem() {
     localStorage.removeItem('teamData');
   }
-
-  getcliamPointID() {
-    return JSON.parse(localStorage.getItem('claimStone'));
-  }
-  setcliamPointID(stone: Stone) {
-    localStorage.setItem('claimStone', JSON.stringify(stone));
-  }
-  removeClaimPointID() {
-    localStorage.removeItem('claimStone');
-  }
-
-
 }
 
 

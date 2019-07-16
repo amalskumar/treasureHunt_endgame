@@ -29,10 +29,10 @@
           <a  (click)="redirectToPlay()" class="nav-link"><i class="nc-icon nc-button-play"></i>PLAY</a>         
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/trivia']" class="nav-link"><i class="nc-icon nc-time-alarm"></i>TRIVIA</a>
-        </li>
-        <li class="nav-item">
           <a [routerLink]="['/rules']" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>INSTRUCTIONS</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a [routerLink]="['/login']" class="nav-link"><i class="nc-icon nc-single-02"></i>LOGIN</a>
         </li>
 
         <div *ngIf="isLoggedIn" class="nav-item dropdown">
@@ -43,7 +43,7 @@
             aria-expanded="false">
             <i class="nc-icon nc-single-02"></i>{{teamData?.teamName}}</a>
           <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
-            <li class="dropdown-header">{{username}}</li>
+            <li class="dropdown-header">{{userName}}</li>
             <a class="dropdown-item" (click)="updatePoints();">Points : {{teamData?.points}}</a>
             <div class="dropdown-divider"></div>
             <!-- <a class="dropdown-item">Squad List & Leader Board</a> -->

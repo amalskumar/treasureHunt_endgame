@@ -6,7 +6,6 @@ import { CountdownModule } from 'ngx-countdown';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
 import { RulesComponent } from './rules/rules.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -20,28 +19,27 @@ import { TriviaComponent } from './trivia/trivia.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiserviceService } from './services/apiservice.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ClaimpointComponent } from './claimpoint/claimpoint.component';
 import { NgxThanosModule } from '@wellwind/ngx-thanos';
 import { MsAdalAngular6Service, MsAdalAngular6Module } from 'microsoft-adal-angular6';
 import { InsertAuthTokenInterceptor } from './services/insert-auth-token-interceptor';
 import { AuthenticationGuard } from 'microsoft-adal-angular6';
-import { FoundstoneComponent } from './claimpoint/foundstone/foundstone.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LandingComponent } from './landing/landing.component';
 import { GamepanelComponent } from './gamepanel/gamepanel.component';
+import { LoginComponent } from './shared/login/login.component';
+import { LogoutComponent } from './shared/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
     RulesComponent,
     NavbarComponent,
     FooterComponent,
-    ClaimpointComponent,
-    FoundstoneComponent,
     HomeComponent,
     LandingComponent,
     GamepanelComponent,
-    TriviaComponent
+    TriviaComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +66,8 @@ import { GamepanelComponent } from './gamepanel/gamepanel.component';
       cacheLocation: 'sessionStorage',
       // redirectUri: 'https://endgame.world/claim-stone',
       // postLogoutRedirectUri: 'https://endgame.world/',
-      redirectUri: 'http://localhost:4200/home',
       postLogoutRedirectUri: 'http://localhost:4200/home',
-      navigateToLoginRequestUrl: false,
+      navigateToLoginRequestUrl: true,
     })
 
   ],
