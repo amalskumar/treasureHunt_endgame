@@ -13,7 +13,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'rules', component: RulesComponent },
-  { path: 'leaderboard', component: LeaderboardComponent },
+  { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthenticationGuard] },
   { path: 'game', component: LandingComponent, canActivate: [AuthenticationGuard]},
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },

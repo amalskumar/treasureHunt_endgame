@@ -23,7 +23,6 @@ export class GamepanelComponent implements OnInit {
     }
   }
 
-
   constructor(
     public dialogRef: MatDialogRef<LandingComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -74,7 +73,7 @@ export class GamepanelComponent implements OnInit {
 
   lostGame() {
     if (!this.data.questionData.canAnswer) {
-      this.statusMessage = 'Sorry! You Lost';
+      this.statusMessage = 'Sorry! You used all your chances..';
     }
   }
 

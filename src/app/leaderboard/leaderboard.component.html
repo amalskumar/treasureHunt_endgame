@@ -13,12 +13,13 @@
         <div class="card pt-4" >
           <img class="card-img-top m-auto" src="assets/img/team.png" alt="Card image" style="width:60%">
           <div class="card-body text-center">
-            <span class="pointSection"><h1>31</h1>Total Points</span>
-            <h4 class="card-title">John Doe</h4>
-            <p>amal.sasikumar@hrblock.com</p>
-            <p>amal.ajayakumar@hrblock.com</p>
-            <p>amal.ajayakumar@hrblock.com</p>
-            <p>amal.ajayakumar@hrblock.com</p>
+            <span class="pointSection"><h1>{{teamPoints?.points}}</h1>Total Points</span>
+            <h4 class="card-title">{{teamData?.teamName}}</h4>
+            <p>{{teamData?.teamMember1email}}</p>
+            <p>{{teamData?.teamMember2email}}</p>
+            <p>{{teamData?.teamMember3email}}</p>
+            <p>{{teamData?.teamMember4email}}</p>
+            <p>{{teamData?.teamMember5email}}</p>
           </div>
         </div>
       </div>
@@ -36,8 +37,8 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let topten of topTen">
-                        <td>{{topten.teamName}}</td>
-                        <td>{{topten.points}}</td>
+                        <td>{{topten?.teamName}}</td>
+                        <td>{{topten?.points}}</td>
                       </tr>
                     </tbody>
                   </table>

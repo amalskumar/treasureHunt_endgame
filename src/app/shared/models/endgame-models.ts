@@ -33,3 +33,12 @@ export class QuestionObject {
     QuestionData: Question;
     countrySelected: string;
 }
+
+export class TeamData {
+    teamName: string;
+    teamMember1email: string;
+    teamMember2email: string;
+    teamMember3email: string;
+    teamMember4email: string;
+    teamMember5email: string;
+}
