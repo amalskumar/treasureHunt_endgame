@@ -22,6 +22,8 @@ export class Question {
     url: string;
     country: string;
     showHint: boolean;
+    location: string;
+    questionText: string;
 }
 
 export class Answer {

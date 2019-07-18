@@ -9,7 +9,6 @@ import { AuthenticationGuard } from 'microsoft-adal-angular6';
 import { LandingComponent } from './landing/landing.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
-
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'rules', component: RulesComponent },
@@ -19,8 +18,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];
-
-// canActivate: [AuthenticationGuard]
 
 @NgModule({
   imports: [

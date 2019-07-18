@@ -92,3 +92,20 @@ button{
     color: white;
     font-size: 13px;
 }
+#answerKey{
+    border: 2px dotted blue;
+}
+
+::ng-deep .snackbar{
+    background: transparent!important;
+    border:2px solid #22b4be; 
+    color: #22b4be!important;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+::ng-deep .snackbar button{
+    color: #22b4be!important;
+    font-size: 12px;
+    font-weight: bold;
+}

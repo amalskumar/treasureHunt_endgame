@@ -32,7 +32,7 @@ export class InsertAuthTokenInterceptor implements HttpInterceptor {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.token}`,
                     'Name': `${this.name}`,
-                    'TeamName': `${this.teamData.teamName}`, // get teamname from local storage.
+                    'TeamName': `${this.teamData.teamName}`,
                 })
             });
             return next.handle(authorizedRequest);

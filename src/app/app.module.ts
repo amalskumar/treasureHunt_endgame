@@ -13,7 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatRippleModule } from '@angular/material';
+import { MatRippleModule, MatSnackBarModule } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { TriviaComponent } from './trivia/trivia.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -61,14 +61,13 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxThanosModule,
+    MatSnackBarModule,
     MsAdalAngular6Module.forRoot({
       tenant: '3ec4eda1-a5d1-433d-90da-8dc791283d95', // HRB Tenant
       clientId: '18d61313-a5d1-4db8-8761-c773b5e48d0d', // EmgGame ID
       authority: 'https://login.microsoftonline.com/3ec4eda1-a5d1-433d-90da-8dc791283d95',
       cacheLocation: 'sessionStorage',
-      // redirectUri: 'https://endgame.world/claim-stone',
-      // postLogoutRedirectUri: 'https://endgame.world/',
-      postLogoutRedirectUri: 'http://localhost:4200/home',
+      postLogoutRedirectUri: 'https://itcdevapp01:8443/endgame/home',
       navigateToLoginRequestUrl: true,
     })
 

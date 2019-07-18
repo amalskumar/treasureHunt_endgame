@@ -67,6 +67,6 @@ export class HomeComponent implements OnInit {
   }
 
   playNow() {
-    window.location.href = '/game';
+    window.location.href = 'game';
   }
 }

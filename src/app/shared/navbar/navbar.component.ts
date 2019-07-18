@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit {
     isHome() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
 
-        if (titlee === '/home') {
+        if (titlee === 'home') {
             return true;
         }
         else {
@@ -93,7 +93,7 @@ export class NavbarComponent implements OnInit {
     isPlay() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
 
-        if (titlee === '/game') {
+        if (titlee === 'game') {
             return true;
         }
         else {
@@ -112,7 +112,7 @@ export class NavbarComponent implements OnInit {
     }
 
     redirectToPlay() {
-        window.location.href = '/game';
+        window.location.href = 'game';
     }
 
     updatePoints() {
