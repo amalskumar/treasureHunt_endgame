@@ -23,7 +23,7 @@ export class Question {
     country: string;
     showHint: boolean;
     location: string;
-    questionText: string;
+    count: number;
 }
 
 export class Answer {

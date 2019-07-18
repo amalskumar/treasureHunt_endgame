@@ -29,7 +29,6 @@ export class GamepanelComponent implements OnInit {
       this.statusMessage = 'Enter the answer to claim the infinity stone';
       this.placeholder = 'Enter the answer!'
     }
-    this.openSnackBar("Congrats you found the key...", "Close");
     this.CheckFileHint();
   }
 

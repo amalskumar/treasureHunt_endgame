@@ -26,8 +26,8 @@ export class ApiserviceService {
 
   login(user: Login) {
     const body = JSON.stringify(user);
-    return this.http.post(`https://itcdevapp01:8443/endgameapi/api/v1/login`, body);
-    // return this.http.post(`http://localhost:8080/api/v1/login`, body, httpOptions);
+    // return this.http.post(`https://itcdevapp01:8443/endgameapi/api/v1/login`, body);
+    return this.http.post(`http://localhost:8080/api/v1/login`, body, httpOptions);
   }
 
   updateScore() {
@@ -50,15 +50,15 @@ export class ApiserviceService {
 
   }
   getQuestion() {
-    return this.http.get(`https://itcdevapp01:8443/endgameapi/api/v1/question`, httpOptions);
-    // return this.http.get(`http://localhost:8080/api/v1/question`, httpOptions);
+    // return this.http.get(`https://itcdevapp01:8443/endgameapi/api/v1/question`, httpOptions);
+    return this.http.get(`http://localhost:8080/api/v1/question`, httpOptions);
 
   }
 
   postAnswer(answerData: Answer) {
     const body = JSON.stringify(answerData);
-     return this.http.post(`https://itcdevapp01:8443/endgameapi/api/v1/answer`, body, httpOptions);
-     // return this.http.post(`http://localhost:8080/api/v1/answer`, body, httpOptions);
+    // return this.http.post(`https://itcdevapp01:8443/endgameapi/api/v1/answer`, body, httpOptions);
+     return this.http.post(`http://localhost:8080/api/v1/answer`, body, httpOptions);
 
   }
 
