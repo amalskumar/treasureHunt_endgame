@@ -5,16 +5,28 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LandingComponent, DialogData } from 'app/landing/landing.component';
 import { DataserviceService } from 'app/dataservice.service';
 import { MatSnackBar } from '@angular/material';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 @Component({
   selector: 'app-gamepanel',
   templateUrl: './gamepanel.component.html',
-  styleUrls: ['./gamepanel.component.scss']
+  styleUrls: ['./gamepanel.component.scss'],
+  animations: [
+    trigger('simpleFadeAnimation', [
+      state('in', style({opacity: 1})),
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(600 )
+      ]),
+      transition(':leave',
+        animate(600, style({opacity: 0})))
+    ])
+  ]
 })
 export class GamepanelComponent implements OnInit {
 
   answerValue;
   statusMessage = "Enter the secret key to move forward";
-  
+  changeAnimation = "in";
   answer: string;
   fileLink;
   questionLink;
@@ -47,6 +59,7 @@ export class GamepanelComponent implements OnInit {
   Submit() {
 
     if(this.answerValue) {
+      this.changeAnimation = "in";
       this.answerData.answer = this.answerValue;
       if (this.data.questionData.canAnswer) {
         this.apiservice.postAnswer(this.answerData).subscribe((data: Response) => {

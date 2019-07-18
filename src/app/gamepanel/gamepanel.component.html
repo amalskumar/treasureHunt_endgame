@@ -12,7 +12,7 @@
     <div class="col-lg-2 treasureGif">
       <img src="assets/img/panelImage.png" width="120px" height="100px">
     </div>
-    <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.hint && !fileLink">
+    <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.hint && !fileLink" >
     <p>{{data?.questionData?.hint}}</p>
       </div>
     <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.keyHint && !fileLink && !data.questionData.keyOpen">
@@ -21,7 +21,7 @@
       <div class="col-lg-4 treasureClue" *ngIf="fileLink">
         <button mat-button (click)="openHint()">OPEN HINT</button>
       </div>
-    <div class="col-lg-6 text-center" *ngIf="!questionLink">
+    <div class="col-lg-6 text-center" *ngIf="!questionLink" [@simpleFadeAnimation]="changeAnimation">
        <span class="treasureQes">{{data?.questionData?.question}}</span>
     </div>
     <div class="col-lg-6 text-center" *ngIf="questionLink">
