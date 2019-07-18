@@ -147,7 +147,7 @@ export class GamepanelComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 5000,
       panelClass: ['snackbar']
     });
   }
