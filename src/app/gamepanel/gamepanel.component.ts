@@ -14,13 +14,13 @@ import { MatSnackBar } from '@angular/material';
 export class GamepanelComponent implements OnInit {
 
   answerValue;
-  statusMessage = 'Enter the secret key to move forward';
+  statusMessage = 'Enter  the secret key to move forward';
   changeAnimation = 'in';
   answer: string;
   fileLink;
   questionLink;
   fail;
-  success= false;
+  success = false;
   answerData: Answer;
   DialogData: QuestionObject;
   placeholder = 'Enter Key!'
@@ -49,7 +49,7 @@ export class GamepanelComponent implements OnInit {
   Submit() {
 
     if (this.answerValue) {
-      this.success=true;
+      this.success = true;
       this.answerData.answer = this.answerValue;
       if (this.data.questionData.canAnswer) {
         this.apiservice.postAnswer(this.answerData).subscribe((data: Response) => {
@@ -58,10 +58,15 @@ export class GamepanelComponent implements OnInit {
             this.openSnackBar(data.message, 'Close');
             this.placeholder = 'Enter the answer!'
             this.getQuestion();
-            this.success=true;
+            this.success = true;
           } else if (data.status == 'Fail') {
-            this.success=false;
+            this.success = false;
             this.statusMessage = data.message;
+          } else if (data.status == 'KeyFoundError') {
+            this.success = false;
+            this.statusMessage = data.message;
+            this.placeholder = 'Enter the answer!'
+            this.getQuestion();
           }
         });
       } else {

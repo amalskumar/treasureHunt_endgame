@@ -4,7 +4,7 @@
 >
   <div class="container">
     <div class="navbar-translate">
-      <a (click)="home()"
+      <a (click)="home()" class="cursor"
         ><img src="assets/img/endgame.png" style="width:150px;"
       /></a>
       <button
@@ -47,13 +47,12 @@
             <i class="nc-icon nc-single-02"></i>{{teamData?.teamName}}</a>
           <ul class="dropdown-menu dropdown-menu-right dropdown-danger">
             <li class="dropdown-header">{{userName}}</li>
-            <a class="dropdown-item" (click)="updatePoints();">Points : {{teamData?.points}}</a>
+            <a class="dropdown-item" (click)="updatePoints();"><i class="nc-icon  nc-refresh-69"></i>Points : {{teamData?.points}}</a>
             <div class="dropdown-divider"></div>
             <!-- <a class="dropdown-item">Squad List & Leader Board</a> -->
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logout();">Logout</a>
+            <a class="dropdown-item" (click)="logout();"><i class="nc-icon  nc-button-power"></i>Logout</a>
           </ul>
-
         </div>
      
       </ul>
