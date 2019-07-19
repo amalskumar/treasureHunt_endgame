@@ -12,19 +12,22 @@
     <div class="col-lg-2 treasureGif">
       <img src="assets/img/panelImage.png" width="120px" height="100px">
     </div>
-    <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.hint && !fileLink" >
+    <div class="col-lg-4 treasureClue animated lightSpeedIn" *ngIf="data?.questionData?.hint && !fileLink" >
     <p>{{data?.questionData?.hint}}</p>
-      </div>
-    <div class="col-lg-4 treasureClue" *ngIf="data?.questionData?.keyHint && !fileLink && !data.questionData.keyOpen">
+    </div>
+    <div class="col-lg-4 treasureClue animated lightSpeedIn" *ngIf="data?.questionData?.keyHint && !fileLink && !data.questionData.keyOpen">
     <p>{{data?.questionData?.keyHint}}</p>
       </div>
-      <div class="col-lg-4 treasureClue" *ngIf="fileLink">
+      <div class="col-lg-4 treasureClue animated lightSpeedIn" *ngIf="fileLink">
         <button mat-button (click)="openHint()">OPEN HINT</button>
       </div>
-    <div class="col-lg-6 text-center" *ngIf="!questionLink" [@simpleFadeAnimation]="changeAnimation">
+    <div class="col-lg-6 text-center animated zoomInDown delay-1s" *ngIf="!questionLink && data.questionData.keyOpen" >
        <span class="treasureQes">{{data?.questionData?.question}}</span>
     </div>
-    <div class="col-lg-6 text-center" *ngIf="questionLink">
+    <div class="col-lg-6 text-center" [ngClass]="{'shakeMe': !success, 'animated hinge': success }" *ngIf="!questionLink && !data.questionData.keyOpen" >
+       <span class="treasureQes">{{data?.questionData?.question}}</span>
+    </div>
+    <div class="col-lg-6 text-center animated zoomInDown delay-1s" *ngIf="questionLink">
        <span class="treasureQes">
         <button mat-button (click)="openMainQuestion()">OPEN MAIN QUESTION</button>
        </span>
@@ -38,11 +41,11 @@
           <div class="syfy left m-auto">
               <form>
                   <div class="form-group">
-                    <input type="text" class="form-control" *ngIf="data.questionData.keyOpen" [(ngModel)]="answerValue" name="answerValue" id="answerKey" placeholder="{{placeholder}}" maxlength="25">
-                    <input type="text" class="form-control" *ngIf="!data.questionData.keyOpen" [(ngModel)]="answerValue" name="answerValue" id="answer" placeholder="{{placeholder}}" maxlength="25">
-                    <small id="emailHelp" class="form-text statusmsg">{{statusMessage}}</small>
-                    <small id="emailHelp" class="form-text statusmsg floatRight" *ngIf="!data.questionData.keyOpen">Chances : Infinite</small>
-                    <small id="emailHelp" class="form-text statusmsg floatRight" *ngIf="data.questionData.keyOpen">Chances : {{data?.questionData?.count}}</small>
+                    <input type="text" class="form-control" *ngIf="data.questionData.keyOpen" [(ngModel)]="answerValue" name="answerValue" id="answerKey" placeholder="{{placeholder}}" maxlength="35">
+                    <input type="text" class="form-control" *ngIf="!data.questionData.keyOpen" [(ngModel)]="answerValue" name="answerValue" id="answer" placeholder="{{placeholder}}" maxlength="35">
+                    <small id="emailHelp" class="form-text statusmsg" [ngClass]="{'shakeMe': !success, 'animated zoomIn': success }">{{statusMessage}}</small>
+                    <small id="emailHelp" class="form-text statusmsg floatRight animated jackInTheBox" *ngIf="!data.questionData.keyOpen">Chances : Infinite</small>
+                    <small id="emailHelp" class="form-text statusmsg floatRight animated flipInX" *ngIf="data.questionData.keyOpen" >Chances : {{data?.questionData?.count}}</small>
                   </div>
                   </form>
           </div>
@@ -54,7 +57,7 @@
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">CLOSE</button>
 
-      <div *ngIf="data?.questionData?.showHint">
+      <div *ngIf="data?.questionData?.showHint" class="animated pulse">
       <button mat-button (click)="hintClick()">HINT (-5 Points)</button>
       </div>
 

@@ -5,39 +5,29 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LandingComponent, DialogData } from 'app/landing/landing.component';
 import { DataserviceService } from 'app/dataservice.service';
 import { MatSnackBar } from '@angular/material';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+
 @Component({
   selector: 'app-gamepanel',
   templateUrl: './gamepanel.component.html',
-  styleUrls: ['./gamepanel.component.scss'],
-  animations: [
-    trigger('simpleFadeAnimation', [
-      state('in', style({opacity: 1})),
-      transition(':enter', [
-        style({opacity: 0}),
-        animate(600 )
-      ]),
-      transition(':leave',
-        animate(600, style({opacity: 0})))
-    ])
-  ]
+  styleUrls: ['./gamepanel.component.scss']
 })
 export class GamepanelComponent implements OnInit {
 
   answerValue;
-  statusMessage = "Enter the secret key to move forward";
-  changeAnimation = "in";
+  statusMessage = 'Enter the secret key to move forward';
+  changeAnimation = 'in';
   answer: string;
   fileLink;
   questionLink;
-  
+  fail;
+  success= false;
   answerData: Answer;
   DialogData: QuestionObject;
   placeholder = 'Enter Key!'
   ngOnInit() {
     if (!this.data.questionData.canAnswer) {
       this.lostGame();
-    } else if(this.data.questionData.keyOpen) {
+    } else if (this.data.questionData.keyOpen) {
       this.statusMessage = 'Enter the answer to claim the infinity stone';
       this.placeholder = 'Enter the answer!'
     }
@@ -58,33 +48,35 @@ export class GamepanelComponent implements OnInit {
   }
   Submit() {
 
-    if(this.answerValue) {
-      this.changeAnimation = "in";
+    if (this.answerValue) {
+      this.success=true;
       this.answerData.answer = this.answerValue;
       if (this.data.questionData.canAnswer) {
         this.apiservice.postAnswer(this.answerData).subscribe((data: Response) => {
           if (data.status == 'Success') {
             this.statusMessage = data.message;
-            this.openSnackBar(data.message, "Close");
+            this.openSnackBar(data.message, 'Close');
             this.placeholder = 'Enter the answer!'
             this.getQuestion();
+            this.success=true;
           } else if (data.status == 'Fail') {
+            this.success=false;
             this.statusMessage = data.message;
           }
         });
       } else {
         this.lostGame();
-       
       }
-    
+
       this.answerValue = '';
     }
- 
+
   }
   hintClick() {
     this.apiservice.getHint().subscribe((data: Response) => {
       if (data.status == 'Success') {
         this.statusMessage = data.message;
+        this.openSnackBar(data.message, '-5 Points');
         this.updatePoints();
         this.getQuestion();
       } else if (data.status == 'Fail') {
@@ -121,29 +113,29 @@ export class GamepanelComponent implements OnInit {
       }
     })
   }
-  
+
   CheckFileHint() {
     let keyHint = this.data.questionData.keyHint;
     let regExp2 = /(.*):(\d*)\/?(.*)/;
-    let regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/
+    let regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/
     let hint = this.data.questionData.hint;
     let mainQues = this.data.questionData.question;
 
-    if(regexp.test(keyHint) || regExp2.test(keyHint)) {
+    if (regexp.test(keyHint) || regExp2.test(keyHint)) {
       this.fileLink = keyHint;
-    } 
-    
-    if(regexp.test(hint) || regExp2.test(hint)){
+    }
+
+    if (regexp.test(hint) || regExp2.test(hint)) {
       this.fileLink = hint;
     }
 
-    if(regExp2.test(mainQues) || regexp.test(mainQues)){
+    if (regExp2.test(mainQues) || regexp.test(mainQues)) {
       this.questionLink = mainQues;
     }
   }
 
   openHint() {
-    let url=this.fileLink;
+    let url = this.fileLink;
     window.open(url, '_blank');
   }
 
@@ -163,5 +155,4 @@ export class GamepanelComponent implements OnInit {
       panelClass: ['snackbar']
     });
   }
-
 }

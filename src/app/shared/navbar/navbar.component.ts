@@ -1,10 +1,9 @@
 import { Points, Login } from './../login/login.component';
 import { ApiserviceService } from 'app/services/apiservice.service';
 import { DataserviceService } from './../../dataservice.service';
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Component, OnInit, ElementRef,  } from '@angular/core';
+import { Location,} from '@angular/common';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
-
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -19,6 +18,8 @@ export class NavbarComponent implements OnInit {
     userEmail: string;
     token: string;
     public loginData: Login;
+
+    
     constructor(public location: Location,
         private element: ElementRef,
         private dataService: DataserviceService,
@@ -36,7 +37,10 @@ export class NavbarComponent implements OnInit {
         this.checkLogin();
     }
 
+
     ngOnInit() {
+     
+
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         if (this.adalSvc.isAuthenticated) {
@@ -113,6 +117,18 @@ export class NavbarComponent implements OnInit {
 
     redirectToPlay() {
         window.location.href = 'game';
+    }
+
+    rules() {
+        window.location.href = 'rules';
+    }
+
+    home() {
+        window.location.href = 'home';
+    }
+
+    leaderboard() {
+        window.location.href = 'leaderboard';
     }
 
     updatePoints() {
