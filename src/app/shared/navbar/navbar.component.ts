@@ -1,9 +1,11 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Points, Login } from './../login/login.component';
 import { ApiserviceService } from 'app/services/apiservice.service';
 import { DataserviceService } from './../../dataservice.service';
 import { Component, OnInit, ElementRef,  } from '@angular/core';
 import { Location,} from '@angular/common';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { Response } from '../models/endgame-models';
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -24,7 +26,8 @@ export class NavbarComponent implements OnInit {
         private element: ElementRef,
         private dataService: DataserviceService,
         private adalSvc: MsAdalAngular6Service,
-        private apiservice: ApiserviceService
+        private apiservice: ApiserviceService,
+        private spinner: NgxSpinnerService
     ) {
         this.loginData = new Login();
         this.isLoggedIn = this.adalSvc.isAuthenticated;
@@ -106,9 +109,18 @@ export class NavbarComponent implements OnInit {
     }
 
     logout() {
+        this.spinner.show();
         this.dataService.removieItem();
-        this.apiservice.logout();
-        this.adalSvc.logout();
+        this.apiservice.logout().subscribe((data: Response) =>{
+            if(data){
+                if(data.status=='Success'){
+                    this.spinner.hide();
+                    this.adalSvc.logout();
+                }else {
+                    this.spinner.hide();
+                }
+            }
+        });
     }
 
     login() {
@@ -129,6 +141,10 @@ export class NavbarComponent implements OnInit {
 
     leaderboard() {
         window.location.href = 'leaderboard';
+    }
+
+    trivia(){
+        window.location.href = 'trivia';
     }
 
     updatePoints() {
@@ -158,6 +174,7 @@ export class NavbarComponent implements OnInit {
                 }
             })
         } else {
+            
         }
     }
 

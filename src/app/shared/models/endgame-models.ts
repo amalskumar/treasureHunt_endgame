@@ -44,3 +44,9 @@ export class TeamData {
     teamMember4email: string;
     teamMember5email: string;
 }
+
+export class TriviaResponse {
+    status: string;
+    message: string;
+    correctAnswers: number;
+}

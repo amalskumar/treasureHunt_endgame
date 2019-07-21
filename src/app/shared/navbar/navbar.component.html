@@ -26,13 +26,16 @@
       <ul class="navbar-nav ml-auto">
        
         <li class="nav-item">
-          <a  (click)="redirectToPlay()" class="nav-link"><i class="nc-icon nc-button-play"></i>PLAY</a>         
+          <a  (click)="redirectToPlay()" class="nav-link"><i class="nc-icon nc-controller-modern"></i>PLAY</a>         
         </li>
         <li class="nav-item">
           <a (click)="rules()" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>INSTRUCTIONS</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
             <a (click)="leaderboard()" class="nav-link"><i class="nc-icon nc-badge"></i>LEADERBOARD</a>
+          </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <a (click)="trivia()" class="nav-link"><i class="nc-icon nc-bulb-63"></i>TRIVIA</a>
           </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" (click)="login()"><i class="nc-icon nc-single-02"></i>LOGIN</a>

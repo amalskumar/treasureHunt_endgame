@@ -8,29 +8,31 @@
           <div clas="col-lg-9">
             <div class="card">
 
-              <div *ngIf="!startTrivia && !QuesOver" class="card-body">
+              <div *ngIf="!startTrivia && !QuesOver && triviaOpen" class="card-body">
                 <div class="triviaIns">
-                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;You have 40 questions o answer</p>
-                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;You will get 30seconds to answer each</p>
-                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;Question changes after timeout even if not submitted
-                  </p>
-                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;TRIVIA ends in 5 minutes! HURRYUP</p>
+                  <h4 style="text-align: center">BONUS ROUND</h4>
+                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;You have 40 questions to answer in 5 mins</p>
+                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;Answer will be submitted automatically when the timer goes off</p>
+                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;Each right answer will give you 1 Point</p>
+                  <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;Once your answer is submitted you can see your updated score</p>
                   <p><i class="nc-icon nc-diamond"></i>&nbsp;&nbsp;Click PLAY to start game!</p>
                 </div>
                 <div class="triviaButton">
                   <a class="btn btn-primary" (click)="playTrivia()">PLAY</a>
-
                 </div>
               </div>
-              <div *ngIf="QuesOver" class="card-body" style="padding: 85px">
+              <div *ngIf="QuesOver && canPlay" class="card-body" style="padding: 85px; text-align: center;">
                 <h3>Game Over!!!</h3>
-
+                <h5>{{message}}</h5>
+                <h6 *ngIf="triviaScore">You got {{triviaScore}}/40 correct answers</h6>
               </div>
-              <div *ngIf="startTrivia && !QuesOver" class="card-body">
+              <div *ngIf="!triviaOpen" class="card-body" style="padding: 85px">
+                <h3>{{triviaOpenMessage}}</h3>
+              </div>
+
+              <div *ngIf="startTrivia && !QuesOver && canPlay" class="card-body">
                 <div class="container">
                   <div class="row">
-
-
                     <div class="col-lg-12 quesSection ">
                       <h3 class="card-title p-1 questitle float-left">Question {{activeQuestion?.id}}/40</h3>
                       <div class="questimer float-right">
@@ -41,25 +43,27 @@
                     <div class="col-lg-12">
                       <form [formGroup]="triviaForm">
                         <div class="radio">
-                          <label><input type="radio" value="a" name="optradio" (click)="optionSelected('choice1')"
+                          <label><input type="radio" value="activeQuestion?.choice1" name="optradio" (click)="optionSelected(activeQuestion?.choice1)"
                               formControlName="optradio">&nbsp;{{activeQuestion?.choice1}}</label>
                         </div>
                         <div class="radio">
-                          <label><input type="radio" value="b" name="optradio" (click)="optionSelected('choice2')"
+                          <label><input type="radio" value="activeQuestion?.choice2" name="optradio" (click)="optionSelected(activeQuestion?.choice2)"
                               formControlName="optradio">&nbsp;{{activeQuestion?.choice2}}</label>
                         </div>
                         <div class="radio ">
-                          <label><input type="radio" value="c" name="optradio" (click)="optionSelected('choice3')"
+                          <label><input type="radio" value="activeQuestion?.choice3" name="optradio" (click)="optionSelected(activeQuestion?.choice3)"
                               formControlName="optradio">&nbsp;{{activeQuestion?.choice3}}</label>
                         </div>
                         <div class="radio ">
-                          <label><input type="radio" value="d" name="optradio" (click)="optionSelected('choice4')"
+                          <label><input type="radio" value="activeQuestion?.choice4" name="optradio" (click)="optionSelected(activeQuestion?.choice4)"
                               formControlName="optradio">&nbsp;{{activeQuestion?.choice4}}</label>
                         </div>
                       </form>
                     </div>
                     <div class="col-lg-12 text-right">
-                      <a class="btn btn-primary mt-2 " (click)="showNextQuestion()">NEXT</a>
+                        <a class="btn btn-primary mt-2" *ngIf="index>1" (click)="showPreviousQuestion()">BACK</a>
+                      <a class="btn btn-primary mt-2" (click)="showNextQuestion()" *ngIf="buttonNext">NEXT</a>
+                      <a class="btn btn-primary mt-2" (click)="showNextQuestion()" *ngIf="!buttonNext">SUBMIT</a>
                     </div>
                   </div>
                 </div>

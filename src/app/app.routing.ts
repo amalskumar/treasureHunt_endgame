@@ -1,3 +1,4 @@
+import { TriviaComponent } from './trivia/trivia.component';
 import { LoginComponent } from './shared/login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'rules', component: RulesComponent },
   { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthenticationGuard] },
   { path: 'game', component: LandingComponent, canActivate: [AuthenticationGuard]},
+  { path: 'trivia', component: TriviaComponent, canActivate: [AuthenticationGuard]},
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
